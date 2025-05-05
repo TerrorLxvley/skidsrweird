@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#000000">
 
     <style>
-        /* Existing styles */
+       
         #overlay {
             position: fixed;
             top: 0;
@@ -36,15 +36,15 @@
             pointer-events: none;
         }
 
-        /* New styles for volume slider */
+        
         .volume-control {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1001; /* Ensure it's above other content */
+            z-index: 1001; 
             display: flex;
             align-items: center;
-            /* Changed background color to purple */
+            
             background-color: rgba(128, 0, 128, 0.7); /* A semi-transparent purple */
             padding: 10px;
             border-radius: 5px;
@@ -79,12 +79,12 @@
             <source src="media/hoa.ogg" type="audio/mpeg">
         </audio>
 
-        <!-- New audio element for Skids tab -->
+        
         <audio id="skids-music" loop="" preload="auto" style="display:none;">
             <source src="media/Roi.ogg" type="audio/mpeg"> <!-- **Replace 'media/Roi.ogg.ogg' with the path to your desired audio file** -->
         </audio>
 
-        <!-- Volume control -->
+       
         <div class="volume-control">
             <label for="volume-slider">Volume:</label>
             <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.01">
@@ -94,7 +94,7 @@
             <nav>
                 <ul class="tabs">
                     <li class="tab active" data-tab="Owners">Owners</li>
-                    <li class="tab" data-tab="Skids">Skids'</li>
+                    <li class="tab" data-tab="HOA">HOA</li>
                 </ul>
                 <div class="glitch-container">
                     <img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectstart="return false" onmousedown="return false;">
@@ -170,7 +170,7 @@
                 </div>
             </div>
 
-            <div class="tab-content active" id="Skids">
+            <div class="tab-content active" id="HOA">
                 <div class="container">
 
                     <div class="card">
