@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#000000">
 
     <style>
-        
+        /* Existing styles */
         #overlay {
             position: fixed;
             top: 0;
@@ -36,15 +36,16 @@
             pointer-events: none;
         }
 
-        
+        /* New styles for volume slider */
         .volume-control {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1001; 
+            z-index: 1001; /* Ensure it's above other content */
             display: flex;
             align-items: center;
-            background-color: rgba(128, 0, 128, 0.7);
+            /* Changed background color to purple */
+            background-color: rgba(128, 0, 128, 0.7); /* A semi-transparent purple */
             padding: 10px;
             border-radius: 5px;
         }
@@ -55,7 +56,7 @@
         }
 
         .volume-control input[type="range"] {
-            width: 145px; 
+            width: 100px; /* Adjust slider width as needed */
         }
     </style>
 </head>
@@ -78,7 +79,12 @@
             <source src="media/hoa.ogg" type="audio/mpeg">
         </audio>
 
-       
+        <!-- New audio element for Skids tab -->
+        <audio id="skids-music" loop="" preload="auto" style="display:none;">
+            <source src="media/Roi.gg" type="audio/mpeg"> <!-- **Replace 'media/skids_music.ogg' with the path to your desired audio file** -->
+        </audio>
+
+        <!-- Volume control -->
         <div class="volume-control">
             <label for="volume-slider">Volume:</label>
             <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.01">
@@ -243,31 +249,72 @@
 
           document.addEventListener('DOMContentLoaded', function() {
             const bgMusic = document.getElementById('bg-music');
+            const skidsMusic = document.getElementById('skids-music'); // Get the new audio element
             const volumeSlider = document.getElementById('volume-slider'); // Get the volume slider
+            const skidsTab = document.querySelector('.tab[data-tab="Skids"]'); // Get the Skids tab element
+            const ownersTab = document.querySelector('.tab[data-tab="Owners"]'); // Get the Owners tab element
+
+            let currentMusic = bgMusic; // Variable to keep track of the currently playing music
 
             if (bgMusic) {
+              bgMusic.volume = 0.01; // Initial volume for background music
+              skidsMusic.volume = 0.01; // Initial volume for skids music (can be adjusted)
 
-              bgMusic.volume = 0.01; // Initial volume
+              // Function to play background music
+              const playBgMusic = function() {
+                  skidsMusic.pause(); // Pause skids music
+                  skidsMusic.currentTime = 0; // Reset skids music to the beginning
+                  bgMusic.play().catch(e => console.error('Error playing background music:', e));
+                  currentMusic = bgMusic; // Update current music
+              };
 
-           
+              // Function to play skids music
+              const playSkidsMusic = function() {
+                  bgMusic.pause(); // Pause background music
+                  bgMusic.currentTime = 0; // Reset background music to the beginning
+                  skidsMusic.play().catch(e => console.error('Error playing skids music:', e));
+                  currentMusic = skidsMusic; // Update current music
+              };
+
+              // Add event listener to the volume slider
               volumeSlider.addEventListener('input', function() {
-                  bgMusic.volume = this.value;
+                  // Apply volume to the currently playing music
+                  if (currentMusic) {
+                      currentMusic.volume = this.value;
+                  }
+              });
+
+              // Add event listener to the Skids tab
+              skidsTab.addEventListener('click', function() {
+                  if (currentMusic !== skidsMusic) { // Only play if not already playing skids music
+                      playSkidsMusic();
+                  }
+              });
+
+              // Add event listener to the Owners tab (to switch back to background music)
+              ownersTab.addEventListener('click', function() {
+                  if (currentMusic !== bgMusic) { // Only play if not already playing background music
+                      playBgMusic();
+                  }
               });
 
 
+              // Initial play of background music after interaction (from the overlay script)
+              // The overlay script handles the initial play logic, we'll adjust the volume here
               const playPromise = bgMusic.play();
 
               if (playPromise !== undefined) {
                 playPromise.then(() => {
                   console.log('Audio playback started successfully');
+                  bgMusic.volume = volumeSlider.value; // Set initial volume from slider
                 }).catch(error => {
                   console.log('Auto-play was prevented. Will play on interaction:', error);
-
 
                   const playAudio = function() {
                     bgMusic.play()
                       .then(() => {
                         console.log('Audio started after user interaction');
+                        bgMusic.volume = volumeSlider.value; // Set initial volume from slider
 
                         document.removeEventListener('click', playAudio);
                         document.removeEventListener('keydown', playAudio);
@@ -275,7 +322,6 @@
                       })
                       .catch(e => console.error('Audio play error:', e));
                   };
-
 
                   document.addEventListener('click', playAudio);
                   document.addEventListener('keydown', playAudio);
@@ -293,19 +339,21 @@
             const overlay = document.getElementById('overlay');
             const websiteContent = document.getElementById('website-content');
             const bgMusic = document.getElementById('bg-music'); // Get the audio element
+            const skidsMusic = document.getElementById('skids-music'); // Get the skids audio element
 
-           
+            // Initially blur the website content
             websiteContent.classList.add('blurred');
 
             const handleInteraction = function() {
                 websiteContent.classList.remove('blurred');
                 overlay.style.display = 'none';
 
+                // Play background music initially after interaction
                 if (bgMusic && bgMusic.paused) {
-                    bgMusic.play().catch(e => console.error('Error playing music:', e));
+                    bgMusic.play().catch(e => console.error('Error playing background music:', e));
                 }
 
-                
+                // Remove the event listeners after the first interaction
                 document.removeEventListener('keydown', handleInteraction);
                 overlay.removeEventListener('click', handleInteraction);
             };
