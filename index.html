@@ -249,7 +249,7 @@
 
               bgMusic.volume = 0.01; // Initial volume
 
-              // Add event listener to the volume slider
+           
               volumeSlider.addEventListener('input', function() {
                   bgMusic.volume = this.value;
               });
@@ -294,7 +294,7 @@
             const websiteContent = document.getElementById('website-content');
             const bgMusic = document.getElementById('bg-music'); // Get the audio element
 
-            // Initially blur the website content
+           
             websiteContent.classList.add('blurred');
 
             const handleInteraction = function() {
@@ -305,7 +305,7 @@
                     bgMusic.play().catch(e => console.error('Error playing music:', e));
                 }
 
-                // Remove the event listeners after the first interaction
+                
                 document.removeEventListener('keydown', handleInteraction);
                 overlay.removeEventListener('click', handleInteraction);
             };
