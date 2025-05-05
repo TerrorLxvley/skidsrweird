@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#000000">
 
     <style>
-   
+        
         #overlay {
             position: fixed;
             top: 0;
@@ -31,7 +31,7 @@
             cursor: pointer; 
         }
 
-      
+        
         .blurred {
             filter: blur(25px); 
             pointer-events: none; 
@@ -45,6 +45,7 @@
     </div>
 
     <div id="website-content">
+        
         <div id="custom-cursor"></div>
         <div class="video-background" style="will-change: opacity, transform;">
             <video autoplay="" muted="" loop="" id="background-video" preload="auto">
@@ -204,6 +205,7 @@
                 <p>SKIDS</p>
             </div>
         </footer>
+
         
         <script src="js/lL6UM7W4lao2.js"></script>
         <script>
@@ -253,11 +255,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const overlay = document.getElementById('overlay');
             const websiteContent = document.getElementById('website-content');
-            
+
+            // Initially blur the website content
             websiteContent.classList.add('blurred');
 
             document.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') 
+                if (event.key === 'Enter') {
+                    // Remove the blur and hide the overlay
                     websiteContent.classList.remove('blurred');
                     overlay.style.display = 'none';
 
