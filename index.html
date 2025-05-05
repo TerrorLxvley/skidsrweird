@@ -80,7 +80,7 @@
         </audio>
 
         
-        <audio id="skids-music" loop="" preload="auto" style="display:none;">
+        <audio id="HOA-music" loop="" preload="auto" style="display:none;">
             <source src="media/Roi.ogg" type="audio/mpeg"> <!-- **Replace 'media/Roi.ogg.ogg' with the path to your desired audio file** -->
         </audio>
 
@@ -249,31 +249,31 @@
 
           document.addEventListener('DOMContentLoaded', function() {
             const bgMusic = document.getElementById('bg-music');
-            const skidsMusic = document.getElementById('skids-music'); // Get the new audio element
+            const HOAMusic = document.getElementById('HOA-music'); // Get the new audio element
             const volumeSlider = document.getElementById('volume-slider'); // Get the volume slider
-            const skidsTab = document.querySelector('.tab[data-tab="Skids"]'); // Get the Skids tab element
+            const HOATab = document.querySelector('.tab[data-tab="HOA"]'); // Get the Skids tab element
             const ownersTab = document.querySelector('.tab[data-tab="Owners"]'); // Get the Owners tab element
 
             let currentMusic = bgMusic; // Variable to keep track of the currently playing music
 
             if (bgMusic) {
               bgMusic.volume = 0.01; // Initial volume for background music
-              skidsMusic.volume = 0.01; // Initial volume for skids music (can be adjusted)
+              HOAMusic.volume = 0.01; // Initial volume for skids music (can be adjusted)
 
               // Function to play background music
               const playBgMusic = function() {
-                  skidsMusic.pause(); // Pause skids music
-                  skidsMusic.currentTime = 0; // Reset skids music to the beginning
+                  HOAMusic.pause(); // Pause skids music
+                  HOAMusic.currentTime = 0; // Reset skids music to the beginning
                   bgMusic.play().catch(e => console.error('Error playing background music:', e));
                   currentMusic = bgMusic; // Update current music
               };
 
               // Function to play skids music
-              const playSkidsMusic = function() {
+              const playHOAMusic = function() {
                   bgMusic.pause(); // Pause background music
                   bgMusic.currentTime = 0; // Reset background music to the beginning
-                  skidsMusic.play().catch(e => console.error('Error playing skids music:', e));
-                  currentMusic = skidsMusic; // Update current music
+                  HOAMusic.play().catch(e => console.error('Error playing skids music:', e));
+                  currentMusic = HOAMusic; // Update current music
               };
 
               // Add event listener to the volume slider
@@ -285,9 +285,9 @@
               });
 
               // Add event listener to the Skids tab
-              skidsTab.addEventListener('click', function() {
-                  if (currentMusic !== skidsMusic) { // Only play if not already playing skids music
-                      playSkidsMusic();
+              HOATab.addEventListener('click', function() {
+                  if (currentMusic !== HOAMusic) { // Only play if not already playing skids music
+                      playHOAMusic();
                   }
               });
 
@@ -339,7 +339,7 @@
             const overlay = document.getElementById('overlay');
             const websiteContent = document.getElementById('website-content');
             const bgMusic = document.getElementById('bg-music'); // Get the audio element
-            const skidsMusic = document.getElementById('skids-music'); // Get the skids audio element
+            const HOAMusic = document.getElementById('HOA-music'); // Get the skids audio element
 
             // Initially blur the website content
             websiteContent.classList.add('blurred');
