@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#000000">
 
     <style>
-        /* Existing styles */
+        
         #overlay {
             position: fixed;
             top: 0;
@@ -36,15 +36,15 @@
             pointer-events: none;
         }
 
-        /* New styles for volume slider */
+        
         .volume-control {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1001; /* Ensure it's above other content */
+            z-index: 1001; 
             display: flex;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(128, 0, 128, 0.7);
             padding: 10px;
             border-radius: 5px;
         }
@@ -55,7 +55,7 @@
         }
 
         .volume-control input[type="range"] {
-            width: 100px; /* Adjust slider width as needed */
+            width: 145px; 
         }
     </style>
 </head>
@@ -78,7 +78,7 @@
             <source src="media/hoa.ogg" type="audio/mpeg">
         </audio>
 
-        <!-- Volume control -->
+       
         <div class="volume-control">
             <label for="volume-slider">Volume:</label>
             <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.01">
