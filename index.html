@@ -3,38 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Press Enter</title>
+    <title>skids are weird</title>
+    <link rel="preload" href="css/9bmjY8CyQwFL.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/9bmjY8CyQwFL.css"></noscript>
+    <link rel="preload" href="css/JNS5A1dh7b4Q.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/JNS5A1dh7b4Q.css"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+
     <style>
-        body {
+        /* Styles for the overlay */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: sans-serif;
+            z-index: 1000; /* Ensure it's on top of everything */
             font-size: 2em;
-            overflow: hidden; /* Prevent scrollbars */
+            cursor: pointer; /* Indicate it's interactive */
         }
 
-        #press-enter {
-            text-align: center;
+        /* Style for the blurred content */
+        .blurred {
+            filter: blur(10px); /* Adjust the blur amount as needed */
+            pointer-events: none; /* Disable interactions with blurred content */
         }
     </style>
 </head>
 <body>
 
-    <div id="press-enter">
+    <div id="overlay">
         Press Enter to continue...
     </div>
 
-    <script>
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                // Replace 'YOUR_WEBSITE_URL_HERE' with the actual URL of your site
-                window.location.href = https://skidsrweird.vercel.app/;
+    <div id="website-content">
+        <!-- Your existing website code starts here -->
+        <div id="custom-cursor"></div>
+        <div class="video-background" style="will-change: opacity, transform;">
+            <video autoplay="" muted="" loop="" id="background-video" preload="auto">
+                <source src="images/SpitInMyFace.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <audio id="bg-music" loop="" preload="auto" style="display:none;">
+            <source src="media/fu0pSfZueHJf.mp3" type="audio/mpeg">
+        </audio>
+        <header>
+            <nav>
+                <ul class="tabs">
+                    <li class="tab active" data-tab="Owners">Owners</li>
+                    <li class="tab" data-tab="Skids">Skids'</li>
+                </ul>
+                <div class="glitch-container">
+                    <img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectstart="return false" onmousedown="return false;">
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="tab-content active" id="Owners">
+                <div class="container">
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/sGjVBfAVJ088.jpg" alt="Profile 1">
+                        </div>
+                        <h2>globe</h2>
+                        <p class="description">osint investigator</p>
+                        <div class="social-icons">
+                            <a href="https://doxbin.net/user/globe" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/CXwdOiyacj13.png" alt="Profile 2">
+                        </div>
+                        <h2>FlipACoin</h2>
+                        <p class="description">Professional Lego Hacker</p>
+                        <div class="social-icons">
+                            <a href="https://doxbin.net/user/chasity" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/aiosdygfOD.png" alt="Profile 3">
+                        </div>
+                        <h2>ZmbieGrl87</h2>
+                        <p class="description">#WeLoveYouZombie</p>
+                        <div class="social-icons">
+                            <a href="https://doxbin.com/" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/sdutyfsdf.png" alt="Profile 4">
+                        </div>
+                        <h2>CXD</h2>
+                        <p class="description">anti extortion/Pedophilia</p>
+                        <div class="social-icons">
+                            <a href="https://doxbin.com/user/CXD" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/QLH1.gif" alt="Profile 5">
+                        </div>
+                        <h2>Terrorlxvley</h2>
+                        <p class="description">special dox agent/ Owner</p>
+                        <div class="social-icons">
+                            <a href="https://doxbin.com/user/extort1ion" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content active" id="Skids">
+                <div class="container">
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/asdfhg.png" alt="Profile 1">
+                        </div>
+                        <h2>Lexie Murray</h2>
+                        <p class="description">Home:28 Village Hill,Straid,Ballyclare BT39 9WQ</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.jpg" alt="Profile 2">
+                        </div>
+                        <h2>Name</h2>
+                        <p class="description">Description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 3">
+                        </div>
+                        <h2>name</h2>
+                        <p class="description">Description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 4">
+                        </div>
+                        <h2>name</h2>
+                        <p class="description">Description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.jpg" alt="Profile 5">
+                        </div>
+                        <h2>Name</h2>
+                        <p class="description">Description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>SKIDS</p>
+            </div>
+        </footer>
+
+        <!-- Your existing script tags -->
+        <script src="js/lL6UM7W4lao2.js"></script>
+        <script>
+
+          document.addEventListener('DOMContentLoaded', function() {
+            const bgMusic = document.getElementById('bg-music');
+
+            if (bgMusic) {
+
+              bgMusic.volume = 0.01;
+
+
+              const playPromise = bgMusic.play();
+
+              if (playPromise !== undefined) {
+                playPromise.then(() => {
+                  console.log('Audio playback started successfully');
+                }).catch(error => {
+                  console.log('Auto-play was prevented. Will play on interaction:', error);
+
+
+                  const playAudio = function() {
+                    bgMusic.play()
+                      .then(() => {
+                        console.log('Audio started after user interaction');
+
+                        document.removeEventListener('click', playAudio);
+                        document.removeEventListener('keydown', playAudio);
+                        document.removeEventListener('touchstart', playAudio);
+                      })
+                      .catch(e => console.error('Audio play error:', e));
+                  };
+
+
+                  document.addEventListener('click', playAudio);
+                  document.addEventListener('keydown', playAudio);
+                  document.addEventListener('touchstart', playAudio);
+                });
+              }
             }
+          });
+        </script>
+        <script src="js/lL6UM7W4lao2.js" defer=""></script>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('overlay');
+            const websiteContent = document.getElementById('website-content');
+
+            // Initially blur the website content
+            websiteContent.classList.add('blurred');
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    // Remove the blur and hide the overlay
+                    websiteContent.classList.remove('blurred');
+                    overlay.style.display = 'none';
+
+                    const bgMusic = document.getElementById('bg-music');
+                    if (bgMusic && bgMusic.paused) {
+                        bgMusic.play().catch(e => console.error('Error playing music:', e));
+                    }
+                }
+            });
+
+            overlay.addEventListener('click', function() {
+                websiteContent.classList.remove('blurred');
+                overlay.style.display = 'none';
+
+                const bgMusic = document.getElementById('bg-music');
+                if (bgMusic && bgMusic.paused) {
+                    bgMusic.play().catch(e => console.error('Error playing music:', e));
+                }
+            });
         });
     </script>
 
