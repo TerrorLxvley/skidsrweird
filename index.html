@@ -159,14 +159,64 @@
             overflow: hidden;
             min-height: 350px;
             padding-bottom: 20px;
+            display: flex;
+            flex-direction: column; /* Arrange content vertically */
+            justify-content: space-between; /* Distribute space */
         }
 
-         .container {
+        .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-         }
+        }
+
+        /* Styles for the text area */
+        .description-textarea {
+            width: calc(100% - 20px); /* Adjust width to account for padding */
+            height: 100px; /* Set a fixed height for the text area */
+            padding: 10px;
+            margin-top: 10px; /* Space between h2 and text area */
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            resize: vertical; /* Allow vertical resizing */
+            background-color: rgba(0, 0, 0, 0.3); /* Transparent background with some opacity */
+            color: #fff; /* Text color */
+            font-family: inherit; /* Use the same font as the rest of the card */
+            font-size: 1em;
+            filter: blur(2px); /* Add a slight blur */
+            overflow-y: auto; /* Add vertical scrollbar */
+        }
+
+        /* Styles for the red scrollbar */
+        .description-textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .description-textarea::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .description-textarea::-webkit-scrollbar-thumb {
+            background: #ff0000; /* Red scrollbar */
+            border-radius: 10px;
+        }
+
+        .description-textarea::-webkit-scrollbar-thumb:hover {
+            background: #cc0000; /* Darker red on hover */
+        }
+
+        /* Optional: For Firefox */
+        .description-textarea {
+            scrollbar-color: #ff0000 rgba(0, 0, 0, 0.1);
+            scrollbar-width: thin;
+        }
+
+        .social-icons {
+            margin-top: auto; /* Push social icons to the bottom */
+        }
     </style>
 </head>
 <body>
@@ -217,8 +267,7 @@
                             <img src="images/QLH3.png" alt="Profile 1">
                         </div>
                         <h2><span>ժ</span><span>ҽ</span><span>ą</span><span>ժ</span></h2>
-                        <p class="description">super scawy gang monkey</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">super scawy gang monkey</textarea>
                         <div class="social-icons">
                             <a href="https://doxbin.net/user/globe" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -229,8 +278,7 @@
                             <img src="images/CXwdOiyacj13.png" alt="Profile 2">
                         </div>
                         <h2><span>F</span><span>l</span><span>i</span><span>p</span><span>A</span><span>C</span><span>o</span><span>i</span><span>n</span></h2>
-                        <p class="description">Professional Lego Hacker</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">Professional Lego Hacker</textarea>
                         <div class="social-icons">
                             <a href="https://doxbin.net/user/chasity" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -240,9 +288,8 @@
                         <div class="profile-image">
                             <img src="images/aiosdygfOD.png" alt="Profile 3">
                         </div>
-                        <h2><span>Z</span><span>m</span><span>b</span><span>i</span><span>e</span><span>G</span><span>r</span><span>l</span><span>8</span><span>7</span></h2>
-                        <p class="description">#WeLoveYouZombie</p>
-                        <p class="extra-description">Description</p>
+                        <h2><span>Z</span><span>m</span><span>b</span><span>i</span><span>ҽ</span><span>G</span><span>r</span><span>l</span><span>8</span><span>7</span></h2>
+                        <textarea class="description-textarea">#WeLoveYouZombie</textarea>
                         <div class="social-icons">
                             <a href="https://doxbin.com/" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -253,8 +300,7 @@
                             <img src="images/sdutyfsdf.png" alt="Profile 4">
                         </div>
                         <h2><span>C</span><span>X</span><span>D</span></h2>
-                        <p class="description">anti extortion/Pedophilia</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">anti extortion/Pedophilia</textarea>
                         <div class="social-icons">
                             <a href="https://doxbin.com/user/CXD" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -265,8 +311,7 @@
                             <img src="images/QLH2.gif" alt="Profile 5">
                         </div>
                         <h2><span>T</span><span>e</span><span>r</span><span>r</span><span>o</span><span>r</span><span>l</span><span>x</span><span>v</span><span>l</span><span>e</span><span>y</span></h2>
-                        <p class="description">special dox agent/ Owner</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">special dox agent/ Owner</textarea>
                         <div class="social-icons">
                             <a href="https://doxbin.com/user/extort1ion" target="_blank">
                                 <img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon">
@@ -283,8 +328,7 @@
                             <img src="images/asdfhg.png" alt="Profile 1">
                         </div>
                         <h2><span>L</span><span>e</span><span>x</span><span>i</span><span>e</span><span> </span><span>M</span><span>u</span><span>r</span><span>r</span><span>a</span><span>y</span></h2>
-                        <p class="description">Home:28 Village Hill,Straid,Ballyclare BT39 9WQ</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">Home:28 Village Hill,Straid,Ballyclare BT39 9WQ</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -294,43 +338,8 @@
                         <div class="profile-image">
                             <img src="images/Image.jpg" alt="Profile 2">
                         </div>
-                        <h2><span>M</span><span>E</span><span>L</span><span>🤮</span></h2>
-                        <p class="description">Zip code
-23514
-TimeZone
-America/New_York (UTC -04:00)
-Local time
-April 27, 2025 at 6:31 PM
-ISP / Provider
-Cox Communications Inc.
-Organization
--
-Connection
-Corporate
-European union
-No
-Weather station
-USVA0557</p>
-                        <p class="extra-description">IP address
-68.231.235.42
-Continent
-North America
-Country by IP
-United States
-City by IP
-Norfolk
-Latitude
-36.8508
-Longitude
--76.2859
-Accuracy
-~
-50 000
-  meters
-State / Region
-Virginia
-District / County
-Norfolk</p>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <textarea class="description-textarea">Description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -341,8 +350,7 @@ Norfolk</p>
                             <img src="images/Image.png" alt="Profile 3">
                         </div>
                         <h2><span>n</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">Description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">Description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -353,8 +361,7 @@ Norfolk</p>
                             <img src="images/Image.png" alt="Profile 4">
                         </div>
                         <h2><span>n</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">Description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">Description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -365,8 +372,7 @@ Norfolk</p>
                             <img src="images/Image.jpg" alt="Profile 5">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">Description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">Description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -377,56 +383,51 @@ Norfolk</p>
                             <img src="images/Image.jpg" alt="Profile 6">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
                     </div>
 
-                    <div class="card">
+                     <div class="card">
                         <div class="profile-image">
                             <img src="images/Image.png" alt="Profile 7">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
                     </div>
 
-                    <div class="card">
+                     <div class="card">
                         <div class="profile-image">
                             <img src="images/Image.png" alt="Profile 8">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
                     </div>
 
-                    <div class="card">
+                     <div class="card">
                         <div class="profile-image">
                             <img src="images/Image.png" alt="Profile 9">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
                     </div>
 
-                    <div class="card">
+                     <div class="card">
                         <div class="profile-image">
                             <img src="images/Image.png" alt="Profile 10">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <p class="description">description</p>
-                        <p class="extra-description">Description</p>
+                        <textarea class="description-textarea">description</textarea>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -555,6 +556,17 @@ Norfolk</p>
                         span.textContent = letter;
                         span.style.setProperty('--index', index);
                         h2.appendChild(span);
+                    });
+                });
+
+                // Basic JavaScript to allow typing in the textareas
+                // Note: Changes are NOT saved or persistent across sessions/users
+                const textareas = document.querySelectorAll('.description-textarea');
+                textareas.forEach(textarea => {
+                    textarea.addEventListener('input', function() {
+                        // This function is triggered when the user types.
+                        // You could potentially send this data to a server here.
+                        console.log('Textarea content changed:', this.value);
                     });
                 });
             });
