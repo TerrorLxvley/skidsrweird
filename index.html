@@ -155,7 +155,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 6em; /* Adjust size as needed */
+            font-size: 3em; /* Adjusted size to fit within the card */
             font-weight: bold;
             opacity: 0; /* Start hidden */
             z-index: -1; /* Place behind the card content */
@@ -174,9 +174,15 @@
             }
         }
 
-        /* Show the SKID element on hover of the card */
+        /* Show the SKID element on hover of the card within the HOA tab */
         #HOA .card:hover .skid-behind {
             opacity: 1; /* Make visible on hover */
+        }
+
+        /* Ensure cards have relative positioning for absolute positioning of skid-behind */
+        .card {
+            position: relative;
+            overflow: hidden; /* Hide anything outside the card boundaries */
         }
     </style>
 </head>
