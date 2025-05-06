@@ -115,45 +115,35 @@
             border-bottom: 2px solid #00ffff; /* Neon blue indicator for the active tab */
         }
 
-        /* Wave and rainbow animation for names on cards */
-        @keyframes wave-rainbow {
+        /* Wave animation for names on cards */
+        @keyframes wave-side {
             0% {
-                transform: translateY(0);
-                color: #ff0000; /* Red */
+                transform: translateX(0);
             }
-            14% {
-                transform: translateY(-2px); /* Slight upward movement */
-                color: #ff7f00; /* Orange */
-            }
-            28% {
-                transform: translateY(0);
-                color: #ffff00; /* Yellow */
-            }
-            42% {
-                transform: translateY(2px); /* Slight downward movement */
-                color: #00ff00; /* Green */
-            }
-            56% {
-                transform: translateY(0);
-                color: #0000ff; /* Blue */
-            }
-            70% {
-                transform: translateY(-2px);
-                color: #4b0082; /* Indigo */
-            }
-            84% {
-                transform: translateY(0);
-                color: #8b00ff; /* Violet */
+            50% {
+                transform: translateX(3px); /* Sway right */
             }
             100% {
-                transform: translateY(0);
-                color: #ff0000; /* Red (completes the loop) */
+                transform: translateX(0); /* Return to center */
             }
         }
 
+        /* Rainbow color animation for names on cards */
+        @keyframes rainbow-color {
+            0% { color: #ff0000; } /* Red */
+            14% { color: #ff7f00; } /* Orange */
+            28% { color: #ffff00; } /* Yellow */
+            42% { color: #00ff00; } /* Green */
+            56% { color: #0000ff; } /* Blue */
+            70% { color: #4b0082; } /* Indigo */
+            84% { color: #8b00ff; } /* Violet */
+            100% { color: #ff0000; } /* Red (completes the loop) */
+        }
+
+
         .card h2 {
-            display: inline-block; /* Important for transform to work correctly */
-            animation: wave-rainbow 3s infinite linear; /* Apply wave and rainbow animation */
+            display: inline-block;
+            animation: wave-side 2s infinite ease-in-out, rainbow-color 6s infinite linear; /* Apply both animations */
         }
     </style>
 </head>
