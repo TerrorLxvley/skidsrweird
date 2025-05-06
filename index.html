@@ -58,7 +58,7 @@
                 box-shadow: none;
             }
             50% {
-                border-color: #00ffff;
+                border-color: #00ffff; /* Neon blue */
                 box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
             }
             100% {
@@ -76,29 +76,30 @@
             width: 100px;
         }
 
+        /* Rainbow glow animation for cards on hover */
         @keyframes rainbow-glow {
             0% {
                 border-color: transparent;
                 box-shadow: none;
             }
             20% {
-                border-color: #ff0000;
+                border-color: #ff0000; /* Red */
                 box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
             }
             40% {
-                border-color: #ffff00;
+                border-color: #ffff00; /* Yellow */
                 box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
             }
             60% {
-                border-color: #00ff00;
+                border-color: #00ff00; /* Green */
                 box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
             }
             80% {
-                border-color: #0000ff;
+                border-color: #0000ff; /* Blue */
                 box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff;
             }
             100% {
-                border-color: #8b00ff;
+                border-color: #8b00ff; /* Violet */
                 box-shadow: 0 0 10px #8b00ff, 0 0 20px #8b00ff;
             }
         }
@@ -109,42 +110,46 @@
             transition: transform 0.3s ease-in-out;
         }
 
+        /* Optional: Style for the active tab */
         .tabs .tab.active {
-            border-bottom: 2px solid #00ffff;
+            border-bottom: 2px solid #00ffff; /* Neon blue indicator for the active tab */
         }
 
+        /* Wave animation for individual letters */
         @keyframes wave-letters {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-5px);
+                transform: translateY(-5px); /* Adjust the bounce height */
             }
         }
 
+        /* Rainbow color animation for individual letters */
         @keyframes rainbow-letter-color {
-            0% { color: #ff0000; }
-            14% { color: #ff7f00; }
-            28% { color: #ffff00; }
-            42% { color: #00ff00; }
-            56% { color: #0000ff; }
-            70% { color: #4b0082; }
-            84% { color: #8b00ff; }
-            100% { color: #ff0000; }
+            0% { color: #ff0000; } /* Red */
+            14% { color: #ff7f00; } /* Orange */
+            28% { color: #ffff00; } /* Yellow */
+            42% { color: #00ff00; } /* Green */
+            56% { color: #0000ff; } /* Blue */
+            70% { color: #4b0082; } /* Indigo */
+            84% { color: #8b00ff; } /* Violet */
+            100% { color: #ff0000; } /* Red (completes the loop) */
         }
 
 
         .card h2 {
-            display: flex;
-            justify-content: center;
+            display: flex; /* Use flexbox to align letters */
+            justify-content: center; /* Center the letters */
         }
 
         .card h2 span {
-            display: inline-block;
-            animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear;
-            animation-delay: calc(var(--index) * 0.1s);
+            display: inline-block; /* Make each letter an inline-block element */
+            animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear; /* Apply both animations */
+            animation-delay: calc(var(--index) * 0.1s); /* Add a delay based on letter index for the wave effect */
         }
 
+        /* Styles for the SKID element (removed display on hover) */
         .skid-behind {
             position: absolute;
             top: 50%;
@@ -152,22 +157,24 @@
             transform: translate(-50%, -50%);
             font-size: 3em;
             font-weight: bold;
-            opacity: 0;
+            opacity: 0; /* Always hidden */
             z-index: -1;
             pointer-events: none;
-            animation: none;
+            animation: none; /* Remove the animation */
         }
 
+        /* Ensure cards have relative positioning */
         .card {
             position: relative;
             overflow: hidden;
         }
 
+         /* Styles for the container to allow multiple rows */
          .container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap; /* Allow cards to wrap to the next row */
+            justify-content: center; /* Center the cards */
+            gap: 20px; /* Add space between cards */
          }
     </style>
 </head>
@@ -344,6 +351,7 @@
                         </div>
                          </div>
 
+                    <!-- New Row of Cards in HOA Tab (These were requested to be kept) -->
                     <div class="card">
                         <div class="profile-image">
                             <img src="images/Image.jpg" alt="Profile 6">
