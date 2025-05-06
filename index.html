@@ -148,6 +148,36 @@
             animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear; /* Apply both animations */
             animation-delay: calc(var(--index) * 0.1s); /* Add a delay based on letter index for the wave effect */
         }
+
+        /* Styles for the SKID element */
+        .skid-behind {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6em; /* Adjust size as needed */
+            font-weight: bold;
+            opacity: 0; /* Start hidden */
+            z-index: -1; /* Place behind the card content */
+            pointer-events: none; /* Prevent interaction */
+            animation: skid-flash 2s infinite linear; /* Apply the flashing animation */
+        }
+
+        @keyframes skid-flash {
+            0%, 100% {
+                opacity: 0; /* Hidden */
+                color: #00ffff; /* Blue */
+            }
+            50% {
+                opacity: 1; /* Visible */
+                color: #ff0000; /* Red */
+            }
+        }
+
+        /* Show the SKID element on hover of the card */
+        #HOA .card:hover .skid-behind {
+            opacity: 1; /* Make visible on hover */
+        }
     </style>
 </head>
 <body>
@@ -272,6 +302,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
+                         <div class="skid-behind">SKID</div>
                     </div>
 
 
@@ -284,6 +315,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
+                         <div class="skid-behind">SKID</div>
                     </div>
 
 
@@ -296,6 +328,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
+                         <div class="skid-behind">SKID</div>
                     </div>
 
 
@@ -308,6 +341,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
+                         <div class="skid-behind">SKID</div>
                     </div>
 
 
@@ -320,6 +354,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
+                         <div class="skid-behind">SKID</div>
                     </div>
                 </div>
             </div>
