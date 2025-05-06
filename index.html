@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,7 +257,7 @@
 
             let currentMusic = bgMusic;
 
-            if (bgMusic) {
+            if (bgMusic && HOAMusic) { // Ensure both audio elements exist
               bgMusic.volume = 1.0;
               HOAMusic.volume = 1.0;
 
@@ -268,6 +267,7 @@
                   HOAMusic.currentTime = 0;
                   bgMusic.play().catch(e => console.error('Error playing background music:', e));
                   currentMusic = bgMusic;
+                  updateVolume(); // Update volume when switching
               };
 
 
@@ -276,30 +276,37 @@
                   bgMusic.currentTime = 0;
                   HOAMusic.play().catch(e => console.error('Error playing skids music:', e));
                   currentMusic = HOAMusic;
+                  updateVolume(); // Update volume when switching
+              };
+
+              const updateVolume = function() {
+                  if (currentMusic && volumeSlider) {
+                      currentMusic.volume = volumeSlider.value;
+                  }
               };
 
 
-              volumeSlider.addEventListener('input', function() {
-
-                  if (currentMusic) {
-                      currentMusic.volume = this.value;
-                  }
-              });
+              if (volumeSlider) {
+                  volumeSlider.addEventListener('input', updateVolume);
+              }
 
 
-              HOATab.addEventListener('click', function() {
-                  if (currentMusic !== HOAMusic) {
-                      playHOAMusic();
-                  }
-              });
+              if (HOATab) {
+                  HOATab.addEventListener('click', function() {
+                      if (currentMusic !== HOAMusic) {
+                          playHOAMusic();
+                      }
+                  });
+              }
 
 
-              ownersTab.addEventListener('click', function() {
-                  if (currentMusic !== bgMusic) {
-                      playBgMusic();
-                  }
-              });
-
+              if (ownersTab) {
+                  ownersTab.addEventListener('click', function() {
+                      if (currentMusic !== bgMusic) {
+                          playBgMusic();
+                      }
+                  });
+              }
 
 
               const playPromise = bgMusic.play();
@@ -307,7 +314,7 @@
               if (playPromise !== undefined) {
                 playPromise.then(() => {
                   console.log('Audio playback started successfully');
-                  bgMusic.volume = volumeSlider.value;
+                  updateVolume(); // Set initial volume
                 }).catch(error => {
                   console.log('Auto-play was prevented. Will play on interaction:', error);
 
@@ -315,7 +322,7 @@
                     bgMusic.play()
                       .then(() => {
                         console.log('Audio started after user interaction');
-                        bgMusic.volume = volumeSlider.value;
+                        updateVolume(); // Set volume after interaction
 
                         document.removeEventListener('click', playAudio);
                         document.removeEventListener('keydown', playAudio);
@@ -350,8 +357,10 @@
                 overlay.style.display = 'none';
 
 
-                if (bgMusic && bgMusic.paused) {
-                    bgMusic.play().catch(e => console.error('Error playing background music:', e));
+                const currentMusic = document.querySelector('.tab.active').dataset.tab === 'HOA' ? HOAMusic : bgMusic;
+
+                if (currentMusic && currentMusic.paused) {
+                    currentMusic.play().catch(e => console.error('Error playing music on interaction:', e));
                 }
 
 
@@ -373,4 +382,3 @@
 
 </body>
 </html>
-```
