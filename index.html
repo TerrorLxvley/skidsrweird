@@ -171,10 +171,9 @@
             gap: 20px;
         }
 
-        /* Styles for the description container */
         .description-container {
             width: calc(100% - 20px);
-            height: 100px; /* Set a fixed height */
+            height: 100px;
             padding: 10px;
             margin-top: 10px;
             box-sizing: border-box;
@@ -184,12 +183,10 @@
             color: #fff;
             font-family: inherit;
             font-size: 1em;
-            filter: blur(2px);
-            overflow-y: auto; /* Add vertical scrollbar */
-            pointer-events: none; /* Prevent interaction (typing) */
+            overflow-y: auto;
+            pointer-events: none;
         }
 
-        /* Styles for the red scrollbar */
         .description-container::-webkit-scrollbar {
             width: 8px;
         }
@@ -200,15 +197,14 @@
         }
 
         .description-container::-webkit-scrollbar-thumb {
-            background: #ff0000; /* Red scrollbar */
+            background: #ff0000;
             border-radius: 10px;
         }
 
         .description-container::-webkit-scrollbar-thumb:hover {
-            background: #cc0000; /* Darker red on hover */
+            background: #cc0000;
         }
 
-        /* Optional: For Firefox */
         .description-container {
             scrollbar-color: #ff0000 rgba(0, 0, 0, 0.1);
             scrollbar-width: thin;
