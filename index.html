@@ -351,7 +351,6 @@
                         </div>
                          </div>
 
-                    <!-- New Row of Cards in HOA Tab (These were requested to be kept) -->
                     <div class="card">
                         <div class="profile-image">
                             <img src="images/Image.jpg" alt="Profile 6">
@@ -483,35 +482,78 @@
               }
 
 
-              const playPromise = hoaMusic.play();
-
-              if (playPromise !== undefined) {
-                playPromise.then(() => {
-                  console.log('Audio playback started successfully');
+              // Attempt to play music initially (might be blocked by browser)
+              const initialPlayPromise = hoaMusic.play();
+              if (initialPlayPromise !== undefined) {
+                initialPlayPromise.then(() => {
+                  console.log('Initial audio playback started successfully');
                   updateVolume();
                 }).catch(error => {
-                  console.log('Auto-play was prevented. Will play on interaction:', error);
-
-                  const playAudio = function() {
-                    hoaMusic.play()
-                      .then(() => {
-                        console.log('Audio started after user interaction');
-                        updateVolume();
-
-                        document.removeEventListener('click', playAudio);
-                        document.removeEventListener('keydown', playAudio);
-                        document.removeEventListener('touchstart', playAudio);
-                      })
-                      .catch(e => console.error('Audio play error:', e));
-                  };
-
-                  document.addEventListener('click', playAudio);
-                  document.addEventListener('keydown', playAudio);
-                  document.addEventListener('touchstart', playAudio);
+                  console.log('Initial auto-play was prevented. Will play on interaction:', error);
                 });
               }
+
             }
           });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const overlay = document.getElementById('overlay');
+                const websiteContent = document.getElementById('website-content');
+                const hoaMusic = document.getElementById('hoa-music');
+                const roiMusic = document.getElementById('roi-music');
+
+                // Add the blurred class initially
+                websiteContent.classList.add('blurred');
+
+                const handleInteraction = function() {
+                    // Remove the blurred class and hide the overlay
+                    websiteContent.classList.remove('blurred');
+                    overlay.style.display = 'none';
+
+                    // Determine which music to play based on the active tab
+                    const activeTab = document.querySelector('.tabs .tab.active');
+                    let musicToPlay = null;
+                    if (activeTab && activeTab.dataset.tab === 'HOA') {
+                        musicToPlay = roiMusic;
+                    } else {
+                        musicToPlay = hoaMusic;
+                    }
+
+                    // Play the selected music if it's paused
+                    if (musicToPlay && musicToPlay.paused) {
+                        musicToPlay.play().catch(e => console.error('Error playing music on interaction:', e));
+                    }
+
+                    // Remove the event listeners after the first interaction
+                    document.removeEventListener('keydown', handleInteractionOnEnter);
+                    overlay.removeEventListener('click', handleInteraction);
+                };
+
+                // Separate function for keydown event to check for 'Enter' key
+                const handleInteractionOnEnter = function(event) {
+                    if (event.key === 'Enter') {
+                        handleInteraction();
+                    }
+                };
+
+                // Add event listeners for keydown (Enter) and click on the overlay
+                document.addEventListener('keydown', handleInteractionOnEnter);
+                overlay.addEventListener('click', handleInteraction);
+
+                // Wrap each letter in the h2 elements with a span
+                const h2Elements = document.querySelectorAll('.card h2');
+                h2Elements.forEach(h2 => {
+                    const text = h2.textContent;
+                    h2.innerHTML = ''; // Clear existing content
+                    text.split('').forEach((letter, index) => {
+                        const span = document.createElement('span');
+                        span.textContent = letter;
+                        span.style.setProperty('--index', index); // Set a custom property for animation delay
+                        h2.appendChild(span);
+                    });
+                });
+            });
         </script>
         <script src="clown.js"></script>
         <script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
