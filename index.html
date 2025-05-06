@@ -115,21 +115,18 @@
             border-bottom: 2px solid #00ffff; /* Neon blue indicator for the active tab */
         }
 
-        /* Wave animation for names on cards */
-        @keyframes wave-side {
-            0% {
-                transform: translateX(0);
+        /* Wave animation for individual letters */
+        @keyframes wave-letters {
+            0%, 100% {
+                transform: translateY(0);
             }
             50% {
-                transform: translateX(3px); /* Sway right */
-            }
-            100% {
-                transform: translateX(0); /* Return to center */
+                transform: translateY(-5px); /* Adjust the bounce height */
             }
         }
 
-        /* Rainbow color animation for names on cards */
-        @keyframes rainbow-color {
+        /* Rainbow color animation for individual letters */
+        @keyframes rainbow-letter-color {
             0% { color: #ff0000; } /* Red */
             14% { color: #ff7f00; } /* Orange */
             28% { color: #ffff00; } /* Yellow */
@@ -142,8 +139,14 @@
 
 
         .card h2 {
-            display: inline-block;
-            animation: wave-side 2s infinite ease-in-out, rainbow-color 6s infinite linear; /* Apply both animations */
+            display: flex; /* Use flexbox to align letters */
+            justify-content: center; /* Center the letters */
+        }
+
+        .card h2 span {
+            display: inline-block; /* Make each letter an inline-block element */
+            animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear; /* Apply both animations */
+            animation-delay: calc(var(--index) * 0.1s); /* Add a delay based on letter index for the wave effect */
         }
     </style>
 </head>
@@ -197,7 +200,7 @@
                         <div class="profile-image">
                             <img src="images/QLH3.png" alt="Profile 1">
                         </div>
-                        <h2>ժҽąժ</h2>
+                        <h2><span>ժ</span><span>ҽ</span><span>ą</span><span>ժ</span></h2>
                         <p class="description">super scawy gang monkey</p>
                         <div class="social-icons">
                             <a href="https://doxbin.net/user/globe" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -209,7 +212,7 @@
                         <div class="profile-image">
                             <img src="images/CXwdOiyacj13.png" alt="Profile 2">
                         </div>
-                        <h2>FlipACoin</h2>
+                        <h2><span>F</span><span>l</span><span>i</span><span>p</span><span>A</span><span>C</span><span>o</span><span>i</span><span>n</span></h2>
                         <p class="description">Professional Lego Hacker</p>
                         <div class="social-icons">
                             <a href="https://doxbin.net/user/chasity" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -221,7 +224,7 @@
                         <div class="profile-image">
                             <img src="images/aiosdygfOD.png" alt="Profile 3">
                         </div>
-                        <h2>ZmbieGrl87</h2>
+                        <h2><span>Z</span><span>m</span><span>b</span><span>i</span><span>e</span><span>G</span><span>r</span><span>l</span><span>8</span><span>7</span></h2>
                         <p class="description">#WeLoveYouZombie</p>
                         <div class="social-icons">
                             <a href="https://doxbin.com/" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -233,7 +236,7 @@
                         <div class="profile-image">
                             <img src="images/sdutyfsdf.png" alt="Profile 4">
                         </div>
-                        <h2>CXD</h2>
+                        <h2><span>C</span><span>X</span><span>D</span></h2>
                         <p class="description">anti extortion/Pedophilia</p>
                         <div class="social-icons">
                             <a href="https://doxbin.com/user/CXD" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -245,7 +248,7 @@
     <div class="profile-image">
         <img src="images/QLH2.gif" alt="Profile 5">
     </div>
-    <h2>Terrorlxvley</h2>
+    <h2><span>T</span><span>e</span><span>r</span><span>r</span><span>o</span><span>r</span><span>l</span><span>x</span><span>v</span><span>l</span><span>e</span><span>y</span></h2>
     <p class="description">special dox agent/ Owner</p>
     <div class="social-icons">
 
@@ -264,7 +267,7 @@
                         <div class="profile-image">
                             <img src="images/asdfhg.png" alt="Profile 1">
                         </div>
-                        <h2>Lexie Murray</h2>
+                        <h2><span>L</span><span>e</span><span>x</span><span>i</span><span>e</span><span> </span><span>M</span><span>u</span><span>r</span><span>r</span><span>a</span><span>y</span></h2>
                         <p class="description">Home:28 Village Hill,Straid,Ballyclare BT39 9WQ</p>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -276,7 +279,7 @@
                         <div class="profile-image">
                             <img src="images/Image.jpg" alt="Profile 2">
                         </div>
-                        <h2>Name</h2>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
                         <p class="description">Description</p>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -288,7 +291,7 @@
                         <div class="profile-image">
                             <img src="images/Image.png" alt="Profile 3">
                         </div>
-                        <h2>name</h2>
+                        <h2><span>n</span><span>a</span><span>m</span><span>e</span></h2>
                         <p class="description">Description</p>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -300,7 +303,7 @@
                         <div class="profile-image">
                             <img src="images/Image.png" alt="Profile 4">
                         </div>
-                        <h2>name</h2>
+                        <h2><span>n</span><span>a</span><span>m</span><span>e</span></h2>
                         <p class="description">Description</p>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -312,7 +315,7 @@
                         <div class="profile-image">
                             <img src="images/Image.jpg" alt="Profile 5">
                         </div>
-                        <h2>Name</h2>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
                         <p class="description">Description</p>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
@@ -466,6 +469,19 @@
             });
 
             overlay.addEventListener('click', handleInteraction);
+
+            // Wrap each letter in the h2 elements with a span
+            const h2Elements = document.querySelectorAll('.card h2');
+            h2Elements.forEach(h2 => {
+                const text = h2.textContent;
+                h2.innerHTML = ''; // Clear existing content
+                text.split('').forEach((letter, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = letter;
+                    span.style.setProperty('--index', index); // Set a custom property for animation delay
+                    h2.appendChild(span);
+                });
+            });
         });
     </script>
     <script src="clown.js"></script>
