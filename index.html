@@ -149,47 +149,24 @@
             animation-delay: calc(var(--index) * 0.1s); /* Add a delay based on letter index for the wave effect */
         }
 
-        /* Styles for the SKID element */
+        /* Styles for the SKID element (removed display on hover) */
         .skid-behind {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 3em; /* Adjusted size to fit within the card */
+            font-size: 3em;
             font-weight: bold;
-            opacity: 0; /* Start hidden */
-            z-index: -1; /* Place behind the card content */
-            pointer-events: none; /* Prevent interaction */
-            animation: skid-flash 2s infinite linear; /* Apply the flashing animation */
+            opacity: 0; /* Always hidden */
+            z-index: -1;
+            pointer-events: none;
+            animation: none; /* Remove the animation */
         }
 
-        @keyframes skid-flash {
-            0%, 100% {
-                opacity: 0; /* Hidden */
-                color: #00ffff; /* Blue */
-            }
-            50% {
-                opacity: 1; /* Visible */
-                color: #ff0000; /* Red */
-            }
-        }
-
-        /* Show the SKID element on hover of the card within the HOA tab */
-        #HOA .card:hover .skid-behind {
-            opacity: 1; /* Make visible on hover */
-        }
-
-        /* Hide the SKID element when not hovering over the card within the HOA tab */
-        #HOA .card .skid-behind {
-             opacity: 0; /* Ensure it's hidden by default */
-             transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
-        }
-
-
-        /* Ensure cards have relative positioning for absolute positioning of skid-behind */
+        /* Ensure cards have relative positioning */
         .card {
             position: relative;
-            overflow: hidden; /* Hide anything outside the card boundaries */
+            overflow: hidden;
         }
     </style>
 </head>
@@ -315,8 +292,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
-                         <div class="skid-behind">SKID</div>
-                    </div>
+                         </div>
 
 
                     <div class="card">
@@ -328,8 +304,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
-                         <div class="skid-behind">SKID</div>
-                    </div>
+                         </div>
 
 
                     <div class="card">
@@ -341,8 +316,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
-                         <div class="skid-behind">SKID</div>
-                    </div>
+                         </div>
 
 
                     <div class="card">
@@ -354,8 +328,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
-                         <div class="skid-behind">SKID</div>
-                    </div>
+                         </div>
 
 
                     <div class="card">
@@ -367,8 +340,7 @@
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
-                         <div class="skid-behind">SKID</div>
-                    </div>
+                         </div>
                 </div>
             </div>
 
