@@ -48,8 +48,8 @@
             background-color: rgba(0, 0, 0, 0.4);
             padding: 10px;
             border-radius: 5px;
-            border: 2px solid transparent; /* Start with transparent border */
-            animation: neon-glow 2s infinite alternate; /* Apply the animation */
+            border: 2px solid transparent;
+            animation: neon-glow 2s infinite alternate;
         }
 
         @keyframes neon-glow {
@@ -74,6 +74,45 @@
 
         .volume-control input[type="range"] {
             width: 100px;
+        }
+
+        /* Rainbow glow animation for cards on hover */
+        @keyframes rainbow-glow {
+            0% {
+                border-color: transparent;
+                box-shadow: none;
+            }
+            20% {
+                border-color: #ff0000; /* Red */
+                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            }
+            40% {
+                border-color: #ffff00; /* Yellow */
+                box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
+            }
+            60% {
+                border-color: #00ff00; /* Green */
+                box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            }
+            80% {
+                border-color: #0000ff; /* Blue */
+                box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff;
+            }
+            100% {
+                border-color: #8b00ff; /* Violet */
+                box-shadow: 0 0 10px #8b00ff, 0 0 20px #8b00ff;
+            }
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            animation: rainbow-glow 2s infinite linear; /* Apply rainbow glow animation on hover */
+            transition: transform 0.3s ease-in-out; /* Keep the transform transition */
+        }
+
+        /* Optional: Style for the active tab */
+        .tabs .tab.active {
+            border-bottom: 2px solid #00ffff; /* Neon blue indicator for the active tab */
         }
     </style>
 </head>
