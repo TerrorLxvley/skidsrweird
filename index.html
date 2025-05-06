@@ -179,6 +179,13 @@
             opacity: 1; /* Make visible on hover */
         }
 
+        /* Hide the SKID element when not hovering over the card within the HOA tab */
+        #HOA .card .skid-behind {
+             opacity: 0; /* Ensure it's hidden by default */
+             transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+        }
+
+
         /* Ensure cards have relative positioning for absolute positioning of skid-behind */
         .card {
             position: relative;
