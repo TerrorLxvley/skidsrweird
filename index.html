@@ -172,6 +172,7 @@
         }
 
         .description-container {
+            display: block; /* Ensure the div is treated as a block element */
             width: calc(100% - 20px);
             height: 100px;
             padding: 10px;
@@ -185,7 +186,6 @@
             font-size: 1em;
             overflow-y: auto;
             overflow-x: hidden;
-            /* Removed pointer-events: none; */
         }
 
         .description-container::-webkit-scrollbar {
