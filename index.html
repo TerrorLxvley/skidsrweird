@@ -257,7 +257,7 @@
             let currentMusic = bgMusic; 
 
             if (bgMusic) {
-              bgMusic.volume = 0.3; 
+              bgMusic.volume = 0.5; 
               HOAMusic.volume = 0.3; 
 
             
@@ -270,10 +270,10 @@
 
              
               const playHOAMusic = function() {
-                  bgMusic.pause(); // Pause background music
-                  bgMusic.currentTime = 0; // Reset background music to the beginning
+                  bgMusic.pause(); 
+                  bgMusic.currentTime = 0; 
                   HOAMusic.play().catch(e => console.error('Error playing skids music:', e));
-                  currentMusic = HOAMusic; // Update current music
+                  currentMusic = HOAMusic; 
               };
 
             
@@ -305,7 +305,7 @@
               if (playPromise !== undefined) {
                 playPromise.then(() => {
                   console.log('Audio playback started successfully');
-                  bgMusic.volume = volumeSlider.value; // Set initial volume from slider
+                  bgMusic.volume = volumeSlider.value; 
                 }).catch(error => {
                   console.log('Auto-play was prevented. Will play on interaction:', error);
 
@@ -313,7 +313,7 @@
                     bgMusic.play()
                       .then(() => {
                         console.log('Audio started after user interaction');
-                        bgMusic.volume = volumeSlider.value; // Set initial volume from slider
+                        bgMusic.volume = volumeSlider.value;
 
                         document.removeEventListener('click', playAudio);
                         document.removeEventListener('keydown', playAudio);
@@ -337,8 +337,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const overlay = document.getElementById('overlay');
             const websiteContent = document.getElementById('website-content');
-            const bgMusic = document.getElementById('bg-music'); // Get the audio element
-            const HOAMusic = document.getElementById('HOA-music'); // Get the skids audio element
+            const bgMusic = document.getElementById('bg-music'); 
+            const HOAMusic = document.getElementById('HOA-music');
 
             
             websiteContent.classList.add('blurred');
