@@ -160,8 +160,8 @@
             min-height: 350px;
             padding-bottom: 20px;
             display: flex;
-            flex-direction: column; /* Arrange content vertically */
-            justify-content: space-between; /* Distribute space */
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .container {
@@ -171,51 +171,51 @@
             gap: 20px;
         }
 
-        /* Styles for the text area */
-        .description-textarea {
-            width: calc(100% - 20px); /* Adjust width to account for padding */
-            height: 100px; /* Set a fixed height for the text area */
+        /* Styles for the description container */
+        .description-container {
+            width: calc(100% - 20px);
+            height: 100px; /* Set a fixed height */
             padding: 10px;
-            margin-top: 10px; /* Space between h2 and text area */
+            margin-top: 10px;
             box-sizing: border-box;
             border: none;
             outline: none;
-            resize: vertical; /* Allow vertical resizing */
-            background-color: rgba(0, 0, 0, 0.3); /* Transparent background with some opacity */
-            color: #fff; /* Text color */
-            font-family: inherit; /* Use the same font as the rest of the card */
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-family: inherit;
             font-size: 1em;
-            filter: blur(2px); /* Add a slight blur */
+            filter: blur(2px);
             overflow-y: auto; /* Add vertical scrollbar */
+            pointer-events: none; /* Prevent interaction (typing) */
         }
 
         /* Styles for the red scrollbar */
-        .description-textarea::-webkit-scrollbar {
+        .description-container::-webkit-scrollbar {
             width: 8px;
         }
 
-        .description-textarea::-webkit-scrollbar-track {
+        .description-container::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
 
-        .description-textarea::-webkit-scrollbar-thumb {
+        .description-container::-webkit-scrollbar-thumb {
             background: #ff0000; /* Red scrollbar */
             border-radius: 10px;
         }
 
-        .description-textarea::-webkit-scrollbar-thumb:hover {
+        .description-container::-webkit-scrollbar-thumb:hover {
             background: #cc0000; /* Darker red on hover */
         }
 
         /* Optional: For Firefox */
-        .description-textarea {
+        .description-container {
             scrollbar-color: #ff0000 rgba(0, 0, 0, 0.1);
             scrollbar-width: thin;
         }
 
         .social-icons {
-            margin-top: auto; /* Push social icons to the bottom */
+            margin-top: auto;
         }
     </style>
 </head>
@@ -267,7 +267,9 @@
                             <img src="images/QLH3.png" alt="Profile 1">
                         </div>
                         <h2><span>ժ</span><span>ҽ</span><span>ą</span><span>ժ</span></h2>
-                        <textarea class="description-textarea">super scawy gang monkey</textarea>
+                        <div class="description-container">
+                            super scawy gang monkey
+                        </div>
                         <div class="social-icons">
                             <a href="https://doxbin.net/user/globe" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -278,7 +280,9 @@
                             <img src="images/CXwdOiyacj13.png" alt="Profile 2">
                         </div>
                         <h2><span>F</span><span>l</span><span>i</span><span>p</span><span>A</span><span>C</span><span>o</span><span>i</span><span>n</span></h2>
-                        <textarea class="description-textarea">Professional Lego Hacker</textarea>
+                        <div class="description-container">
+                            Professional Lego Hacker
+                        </div>
                         <div class="social-icons">
                             <a href="https://doxbin.net/user/chasity" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -289,7 +293,9 @@
                             <img src="images/aiosdygfOD.png" alt="Profile 3">
                         </div>
                         <h2><span>Z</span><span>m</span><span>b</span><span>i</span><span>ҽ</span><span>G</span><span>r</span><span>l</span><span>8</span><span>7</span></h2>
-                        <textarea class="description-textarea">#WeLoveYouZombie</textarea>
+                        <div class="description-container">
+                            #WeLoveYouZombie
+                        </div>
                         <div class="social-icons">
                             <a href="https://doxbin.com/" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -300,7 +306,9 @@
                             <img src="images/sdutyfsdf.png" alt="Profile 4">
                         </div>
                         <h2><span>C</span><span>X</span><span>D</span></h2>
-                        <textarea class="description-textarea">anti extortion/Pedophilia</textarea>
+                        <div class="description-container">
+                            anti extortion/Pedophilia
+                        </div>
                         <div class="social-icons">
                             <a href="https://doxbin.com/user/CXD" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -311,7 +319,9 @@
                             <img src="images/QLH2.gif" alt="Profile 5">
                         </div>
                         <h2><span>T</span><span>e</span><span>r</span><span>r</span><span>o</span><span>r</span><span>l</span><span>x</span><span>v</span><span>l</span><span>e</span><span>y</span></h2>
-                        <textarea class="description-textarea">special dox agent/ Owner</textarea>
+                        <div class="description-container">
+                            special dox agent/ Owner
+                        </div>
                         <div class="social-icons">
                             <a href="https://doxbin.com/user/extort1ion" target="_blank">
                                 <img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon">
@@ -328,7 +338,9 @@
                             <img src="images/asdfhg.png" alt="Profile 1">
                         </div>
                         <h2><span>L</span><span>e</span><span>x</span><span>i</span><span>e</span><span> </span><span>M</span><span>u</span><span>r</span><span>r</span><span>a</span><span>y</span></h2>
-                        <textarea class="description-textarea">Home:28 Village Hill,Straid,Ballyclare BT39 9WQ</textarea>
+                        <div class="description-container">
+                            Home:28 Village Hill,Straid,Ballyclare BT39 9WQ
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -339,7 +351,9 @@
                             <img src="images/Image.jpg" alt="Profile 2">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">Description</textarea>
+                        <div class="description-container">
+                            Description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -350,7 +364,9 @@
                             <img src="images/Image.png" alt="Profile 3">
                         </div>
                         <h2><span>n</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">Description</textarea>
+                        <div class="description-container">
+                            Description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -361,7 +377,9 @@
                             <img src="images/Image.png" alt="Profile 4">
                         </div>
                         <h2><span>n</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">Description</textarea>
+                        <div class="description-container">
+                            Description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -372,7 +390,9 @@
                             <img src="images/Image.jpg" alt="Profile 5">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">Description</textarea>
+                        <div class="description-container">
+                            Description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -383,7 +403,9 @@
                             <img src="images/Image.jpg" alt="Profile 6">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">description</textarea>
+                        <div class="description-container">
+                            description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -394,7 +416,9 @@
                             <img src="images/Image.png" alt="Profile 7">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">description</textarea>
+                        <div class="description-container">
+                            description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -405,7 +429,9 @@
                             <img src="images/Image.png" alt="Profile 8">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">description</textarea>
+                        <div class="description-container">
+                            description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -416,7 +442,9 @@
                             <img src="images/Image.png" alt="Profile 9">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">description</textarea>
+                        <div class="description-container">
+                            description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -427,7 +455,9 @@
                             <img src="images/Image.png" alt="Profile 10">
                         </div>
                         <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
-                        <textarea class="description-textarea">description</textarea>
+                        <div class="description-container">
+                            description
+                        </div>
                         <div class="social-icons">
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
@@ -556,17 +586,6 @@
                         span.textContent = letter;
                         span.style.setProperty('--index', index);
                         h2.appendChild(span);
-                    });
-                });
-
-                // Basic JavaScript to allow typing in the textareas
-                // Note: Changes are NOT saved or persistent across sessions/users
-                const textareas = document.querySelectorAll('.description-textarea');
-                textareas.forEach(textarea => {
-                    textarea.addEventListener('input', function() {
-                        // This function is triggered when the user types.
-                        // You could potentially send this data to a server here.
-                        console.log('Textarea content changed:', this.value);
                     });
                 });
             });
