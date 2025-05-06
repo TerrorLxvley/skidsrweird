@@ -58,7 +58,7 @@
                 box-shadow: none;
             }
             50% {
-                border-color: #00ffff; Neon blue 
+                border-color: #00ffff;
                 box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
             }
             100% {
@@ -76,30 +76,29 @@
             width: 100px;
         }
 
-        Rainbow glow animation for cards on hover 
         @keyframes rainbow-glow {
             0% {
                 border-color: transparent;
                 box-shadow: none;
             }
             20% {
-                border-color: #ff0000; Red 
+                border-color: #ff0000;
                 box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
             }
             40% {
-                border-color: #ffff00; Yellow 
+                border-color: #ffff00;
                 box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
             }
             60% {
-                border-color: #00ff00; Green 
+                border-color: #00ff00;
                 box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
             }
             80% {
-                border-color: #0000ff; Blue 
+                border-color: #0000ff;
                 box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff;
             }
             100% {
-                border-color: #8b00ff; Violet 
+                border-color: #8b00ff;
                 box-shadow: 0 0 10px #8b00ff, 0 0 20px #8b00ff;
             }
         }
@@ -110,46 +109,42 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        Optional: Style for the active tab 
         .tabs .tab.active {
-            border-bottom: 2px solid #00ffff; Neon blue indicator for the active tab 
+            border-bottom: 2px solid #00ffff;
         }
 
-        Wave animation for individual letters 
         @keyframes wave-letters {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-5px); Adjust the bounce height 
+                transform: translateY(-5px);
             }
         }
 
-        Rainbow color animation for individual letters 
         @keyframes rainbow-letter-color {
-            0% { color: #ff0000; } Red 
-            14% { color: #ff7f00; } Orange 
-            28% { color: #ffff00; } Yellow 
-            42% { color: #00ff00; } Green 
-            56% { color: #0000ff; } Blue 
-            70% { color: #4b0082; } Indigo 
-            84% { color: #8b00ff; } Violet 
-            100% { color: #ff0000; } Red (completes the loop) 
+            0% { color: #ff0000; }
+            14% { color: #ff7f00; }
+            28% { color: #ffff00; }
+            42% { color: #00ff00; }
+            56% { color: #0000ff; }
+            70% { color: #4b0082; }
+            84% { color: #8b00ff; }
+            100% { color: #ff0000; }
         }
 
 
         .card h2 {
-            display: flex; Use flexbox to align letters 
-            justify-content: center; Center the letters 
+            display: flex;
+            justify-content: center;
         }
 
         .card h2 span {
-            display: inline-block; Make each letter an inline-block element 
-            animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear; Apply both animations 
-            animation-delay: calc(var(--index) * 0.1s); Add a delay based on letter index for the wave effect 
+            display: inline-block;
+            animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear;
+            animation-delay: calc(var(--index) * 0.1s);
         }
 
-        Styles for the SKID element (removed display on hover) 
         .skid-behind {
             position: absolute;
             top: 50%;
@@ -157,24 +152,22 @@
             transform: translate(-50%, -50%);
             font-size: 3em;
             font-weight: bold;
-            opacity: 0; Always hidden 
+            opacity: 0;
             z-index: -1;
             pointer-events: none;
-            animation: none; Remove the animation 
+            animation: none;
         }
 
-        Ensure cards have relative positioning 
         .card {
             position: relative;
             overflow: hidden;
         }
 
-         Styles for the container to allow multiple rows 
          .container {
             display: flex;
-            flex-wrap: wrap; Allow cards to wrap to the next row 
-            justify-content: center; Center the cards 
-            gap: 20px; Add space between cards 
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
          }
     </style>
 </head>
@@ -286,6 +279,9 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+
             <div class="tab-content active" id="HOA">
                 <div class="container">
 
@@ -347,6 +343,63 @@
                             <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
                         </div>
                          </div>
+
+                    <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.jpg" alt="Profile 6">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <p class="description">description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+                     <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 7">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <p class="description">description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+                     <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 8">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <p class="description">description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+                     <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 9">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <p class="description">description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+                     <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 10">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <p class="description">description</p>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
@@ -452,66 +505,8 @@
             }
           });
         </script>
-        <script src="js/lL6UM7W4lao2.js" defer=""></script>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const overlay = document.getElementById('overlay');
-            const websiteContent = document.getElementById('website-content');
-            const hoaMusic = document.getElementById('hoa-music');
-            const roiMusic = document.getElementById('roi-music');
-
-
-            websiteContent.classList.add('blurred');
-
-            const handleInteraction = function() {
-                websiteContent.classList.remove('blurred');
-                overlay.style.display = 'none';
-
-
-                const activeTab = document.querySelector('.tabs .tab.active');
-                let musicToPlay = null;
-                if (activeTab && activeTab.dataset.tab === 'HOA') {
-                    musicToPlay = roiMusic;
-                } else {
-                    musicToPlay = hoaMusic;
-                }
-
-
-                if (musicToPlay && musicToPlay.paused) {
-                    musicToPlay.play().catch(e => console.error('Error playing music on interaction:', e));
-                }
-
-
-                document.removeEventListener('keydown', handleInteraction);
-                overlay.removeEventListener('click', handleInteraction);
-            };
-
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    handleInteraction();
-                }
-            });
-
-            overlay.addEventListener('click', handleInteraction);
-
-            // Wrap each letter in the h2 elements with a span
-            const h2Elements = document.querySelectorAll('.card h2');
-            h2Elements.forEach(h2 => {
-                const text = h2.textContent;
-                h2.innerHTML = ''; // Clear existing content
-                text.split('').forEach((letter, index) => {
-                    const span = document.createElement('span');
-                    span.textContent = letter;
-                    span.style.setProperty('--index', index); // Set a custom property for animation delay
-                    h2.appendChild(span);
-                });
-            });
-        });
-    </script>
-    <script src="clown.js"></script>
-    <script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+        <script src="clown.js"></script>
+        <script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
 
 </body>
 </html>
