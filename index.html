@@ -48,7 +48,23 @@
             background-color: rgba(0, 0, 0, 0.4);
             padding: 10px;
             border-radius: 5px;
-            border: 2px solid #00ffff; /* Neon blue outline */
+            border: 2px solid transparent; /* Start with transparent border */
+            animation: neon-glow 2s infinite alternate; /* Apply the animation */
+        }
+
+        @keyframes neon-glow {
+            0% {
+                border-color: transparent;
+                box-shadow: none;
+            }
+            50% {
+                border-color: #00ffff; /* Neon blue */
+                box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+            }
+            100% {
+                border-color: transparent;
+                box-shadow: none;
+            }
         }
 
         .volume-control label {
@@ -76,12 +92,12 @@
             </video>
         </div>
 
-        <audio id="bg-music" loop="" preload="auto" style="display:none;">
+        <audio id="hoa-music" loop="" preload="auto" style="display:none;">
             <source src="media/hoa.ogg" type="audio/mpeg">
         </audio>
 
 
-        <audio id="HOA-music" loop="" preload="auto" style="display:none;">
+        <audio id="roi-music" loop="" preload="auto" style="display:none;">
             <source src="media/Roi.ogg" type="audio/mpeg">
         </audio>
 
@@ -249,34 +265,34 @@
         <script>
 
           document.addEventListener('DOMContentLoaded', function() {
-            const bgMusic = document.getElementById('bg-music');
-            const HOAMusic = document.getElementById('HOA-music');
+            const hoaMusic = document.getElementById('hoa-music');
+            const roiMusic = document.getElementById('roi-music');
             const volumeSlider = document.getElementById('volume-slider');
             const HOATab = document.querySelector('.tab[data-tab="HOA"]');
             const ownersTab = document.querySelector('.tab[data-tab="Owners"]');
 
-            let currentMusic = bgMusic;
+            let currentMusic = hoaMusic;
 
-            if (bgMusic && HOAMusic) { // Ensure both audio elements exist
-              bgMusic.volume = 1.0;
-              HOAMusic.volume = 1.0;
+            if (hoaMusic && roiMusic && volumeSlider) {
+              hoaMusic.volume = volumeSlider.value;
+              roiMusic.volume = volumeSlider.value;
 
 
-              const playBgMusic = function() {
-                  HOAMusic.pause();
-                  HOAMusic.currentTime = 0;
-                  bgMusic.play().catch(e => console.error('Error playing background music:', e));
-                  currentMusic = bgMusic;
-                  updateVolume(); // Update volume when switching
+              const playHoaMusic = function() {
+                  roiMusic.pause();
+                  roiMusic.currentTime = 0;
+                  hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
+                  currentMusic = hoaMusic;
+                  updateVolume();
               };
 
 
-              const playHOAMusic = function() {
-                  bgMusic.pause();
-                  bgMusic.currentTime = 0;
-                  HOAMusic.play().catch(e => console.error('Error playing skids music:', e));
-                  currentMusic = HOAMusic;
-                  updateVolume(); // Update volume when switching
+              const playRoiMusic = function() {
+                  hoaMusic.pause();
+                  hoaMusic.currentTime = 0;
+                  roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
+                  currentMusic = roiMusic;
+                  updateVolume();
               };
 
               const updateVolume = function() {
@@ -286,15 +302,13 @@
               };
 
 
-              if (volumeSlider) {
-                  volumeSlider.addEventListener('input', updateVolume);
-              }
+              volumeSlider.addEventListener('input', updateVolume);
 
 
               if (HOATab) {
                   HOATab.addEventListener('click', function() {
-                      if (currentMusic !== HOAMusic) {
-                          playHOAMusic();
+                      if (currentMusic !== roiMusic) {
+                          playRoiMusic();
                       }
                   });
               }
@@ -302,27 +316,27 @@
 
               if (ownersTab) {
                   ownersTab.addEventListener('click', function() {
-                      if (currentMusic !== bgMusic) {
-                          playBgMusic();
+                      if (currentMusic !== hoaMusic) {
+                          playHoaMusic();
                       }
                   });
               }
 
 
-              const playPromise = bgMusic.play();
+              const playPromise = hoaMusic.play();
 
               if (playPromise !== undefined) {
                 playPromise.then(() => {
                   console.log('Audio playback started successfully');
-                  updateVolume(); // Set initial volume
+                  updateVolume();
                 }).catch(error => {
                   console.log('Auto-play was prevented. Will play on interaction:', error);
 
                   const playAudio = function() {
-                    bgMusic.play()
+                    hoaMusic.play()
                       .then(() => {
                         console.log('Audio started after user interaction');
-                        updateVolume(); // Set volume after interaction
+                        updateVolume();
 
                         document.removeEventListener('click', playAudio);
                         document.removeEventListener('keydown', playAudio);
@@ -346,8 +360,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const overlay = document.getElementById('overlay');
             const websiteContent = document.getElementById('website-content');
-            const bgMusic = document.getElementById('bg-music');
-            const HOAMusic = document.getElementById('HOA-music');
+            const hoaMusic = document.getElementById('hoa-music');
+            const roiMusic = document.getElementById('roi-music');
 
 
             websiteContent.classList.add('blurred');
@@ -357,10 +371,17 @@
                 overlay.style.display = 'none';
 
 
-                const currentMusic = document.querySelector('.tab.active').dataset.tab === 'HOA' ? HOAMusic : bgMusic;
+                const activeTab = document.querySelector('.tabs .tab.active');
+                let musicToPlay = null;
+                if (activeTab && activeTab.dataset.tab === 'HOA') {
+                    musicToPlay = roiMusic;
+                } else {
+                    musicToPlay = hoaMusic;
+                }
 
-                if (currentMusic && currentMusic.paused) {
-                    currentMusic.play().catch(e => console.error('Error playing music on interaction:', e));
+
+                if (musicToPlay && musicToPlay.paused) {
+                    musicToPlay.play().catch(e => console.error('Error playing music on interaction:', e));
                 }
 
 
