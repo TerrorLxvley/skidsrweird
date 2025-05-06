@@ -189,11 +189,11 @@
         }
 
         .description-container::-webkit-scrollbar {
-            width: 12px; /* Increased scrollbar width */
+            width: 12px;
         }
 
         .description-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.2); /* Slightly more visible track */
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
         }
 
@@ -207,8 +207,8 @@
         }
 
         .description-container {
-            scrollbar-color: #ff0000 rgba(255, 255, 255, 0.2); /* For Firefox */
-            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: #ff0000 rgba(255, 255, 255, 0.2);
+            scrollbar-width: thin;
         }
 
         .social-icons {
@@ -241,7 +241,7 @@
 
         <div class="volume-control">
             <label for="volume-slider">Volume:</label>
-            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.01">
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.6">
         </div>
 
         <header>
@@ -461,6 +461,41 @@ USVA0557<br>
                      <div class="card">
                         <div class="profile-image">
                             <img src="images/Image.png" alt="Profile 8">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <div class="description-container">
+                            description<br><br>
+                        </div>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+                     <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 9">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <div class="description-container">
+                            description<br><br>
+                        </div>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
+
+                     <div class="card">
+                        <div class="profile-image">
+                            <img src="images/Image.png" alt="Profile 10">
+                        </div>
+                        <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+                        <div class="description-container">
+                            description<br><br>
+                        </div>
+                        <div class="social-icons">
+                            <a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -481,17 +516,18 @@ USVA0557<br>
             const ownersTab = document.querySelector('.tab[data-tab="Owners"]');
 
             let currentMusic = hoaMusic;
+            const initialVolume = 0.6; // Set initial volume to 0.6 (a little more than half)
 
             if (hoaMusic && roiMusic && volumeSlider) {
-              hoaMusic.volume = volumeSlider.value;
-              roiMusic.volume = volumeSlider.value;
+              volumeSlider.value = initialVolume; // Set slider value
+              hoaMusic.volume = initialVolume; // Set initial volume for HOA music
+              roiMusic.volume = initialVolume; // Set initial volume for ROI music
 
               const playHoaMusic = function() {
                   roiMusic.pause();
                   roiMusic.currentTime = 0;
                   hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
                   currentMusic = hoaMusic;
-                  updateVolume();
               };
 
               const playRoiMusic = function() {
@@ -499,7 +535,6 @@ USVA0557<br>
                   hoaMusic.currentTime = 0;
                   roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
                   currentMusic = roiMusic;
-                  updateVolume();
               };
 
               const updateVolume = function() {
@@ -526,11 +561,11 @@ USVA0557<br>
                   });
               }
 
+              // Attempt to play music immediately on page load
               const initialPlayPromise = hoaMusic.play();
               if (initialPlayPromise !== undefined) {
                 initialPlayPromise.then(() => {
                   console.log('Initial audio playback started successfully');
-                  updateVolume();
                 }).catch(error => {
                   console.log('Initial auto-play was prevented. Will play on interaction:', error);
                 });
