@@ -12,6 +12,7 @@
 <noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet" /></noscript>
 <meta http-equiv="x-ua-compatible" content="IE=edge" />
 <meta name="theme-color" content="#000000" />
+
 <style>
 #overlay {
   position: fixed;
@@ -198,217 +199,229 @@
   Skiddie winks are weird ( press enter )
 </div>
 <div id="website-content">
+
 <div id="custom-cursor"></div>
 <div class="video-background" style="will-change: opacity, transform;">
 <video autoplay="" muted="" loop="" id="background-video" preload="auto">
 <source src="images/SpitInMyFace.mp4" type="video/mp4" />
 </video>
 </div>
+
 <audio id="hoa-music" loop="" preload="auto" style="display:none;">
 <source src="media/hoa.ogg" type="audio/mpeg" />
 </audio>
 <audio id="roi-music" loop="" preload="auto" style="display:none;">
 <source src="media/Roi.ogg" type="audio/mpeg" />
 </audio>
+
 <div class="volume-control">
 <label for="volume-slider">Volume:</label>
 <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.6" />
 </div>
+
 <header>
 <nav>
 <ul class="tabs">
 <li class="tab active" data-tab="Owners">Owners</li>
 <li class="tab" data-tab="HOA">HOA</li>
-<li class="tab" data-tab="Depot">Depot</li>
+<li class="tab" data-tab="Depot">Depot</li> <!-- New Tab -->
 </ul>
 <div class="glitch-container">
-<img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectstart="return false" onmousedown="return false;" />
+<img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectstart="return false" onmousedown="return false;">
 </div>
 </nav>
 </header>
+
 <main>
 <div class="tab-content active" id="Owners">
 <div class="container">
-<!-- Owners cards... (your existing code remains unchanged) -->
+<!-- Your existing owners cards... (unchanged) -->
 </div>
 </div>
-<div class="tab-content" id="HOA" style="display: none;">
+
+<div class="tab-content" id="HOA" style="display:none;">
 <div class="container">
-<!-- HOA cards... (your existing code remains unchanged) -->
+<!-- Your existing HOA cards... (unchanged) -->
 </div>
 </div>
-<div class="tab-content" id="Depot" style="display: none;">
-<div class="container" style="flex-direction: column; align-items: center; padding: 20px;">
+
+<div class="tab-content" id="Depot" style="display:none;">
+<div class="container" style="flex-direction: column; align-items: center; padding:20px;">
 <h2>MP4 Video</h2>
-<video controls style="max-width: 80%;">
+<video controls style="max-width:80%;">
 <source src="media/jhjhjh.mp4" type="video/mp4" />
 Your browser does not support the video tag.
 </video>
 </div>
 </div>
 </main>
+
 <footer>
 <div class="footer-content">
 <p>SKIDS</p>
 </div>
 </footer>
+
 <script src="js/lL6UM7W4lao2.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const hoaMusic = document.getElementById('hoa-music');
-  const roiMusic = document.getElementById('roi-music');
-  const volumeSlider = document.getElementById('volume-slider');
-  const HOATab = document.querySelector('.tab[data-tab="HOA"]');
-  const ownersTab = document.querySelector('.tab[data-tab="Owners"]');
+  document.addEventListener('DOMContentLoaded', function() {
+    const hoaMusic = document.getElementById('hoa-music');
+    const roiMusic = document.getElementById('roi-music');
+    const volumeSlider = document.getElementById('volume-slider');
+    const HOATab = document.querySelector('.tab[data-tab="HOA"]');
+    const ownersTab = document.querySelector('.tab[data-tab="Owners"]');
 
-  let currentMusic = hoaMusic;
-  const initialVolume = 0.6;
+    let currentMusic = hoaMusic;
+    const initialVolume = 0.6;
 
-  if (hoaMusic && roiMusic && volumeSlider) {
-    volumeSlider.value = initialVolume;
-    hoaMusic.volume = initialVolume;
-    roiMusic.volume = initialVolume;
+    if (hoaMusic && roiMusic && volumeSlider) {
+      volumeSlider.value = initialVolume;
+      hoaMusic.volume = initialVolume;
+      roiMusic.volume = initialVolume;
 
-    const playHoaMusic = function() {
-      roiMusic.pause();
-      roiMusic.currentTime = 0;
-      hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
-      currentMusic = hoaMusic;
+      const playHoaMusic = function() {
+        roiMusic.pause();
+        roiMusic.currentTime = 0;
+        hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
+        currentMusic = hoaMusic;
+      };
+
+      const playRoiMusic = function() {
+        hoaMusic.pause();
+        hoaMusic.currentTime = 0;
+        roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
+        currentMusic = roiMusic;
+      };
+
+      const updateVolume = function() {
+        if (currentMusic && volumeSlider) {
+          currentMusic.volume = volumeSlider.value;
+        }
+      };
+
+      volumeSlider.addEventListener('input', updateVolume);
+
+      if (HOATab) {
+        HOATab.addEventListener('click', function() {
+          if (currentMusic !== roiMusic) {
+            playRoiMusic();
+          }
+        });
+      }
+
+      if (ownersTab) {
+        ownersTab.addEventListener('click', function() {
+          if (currentMusic !== hoaMusic) {
+            playHoaMusic();
+          }
+        });
+      }
+
+      const initialPlayPromise = hoaMusic.play();
+      if (initialPlayPromise !== undefined) {
+        initialPlayPromise.then(() => {
+          console.log('Initial audio playback started successfully');
+        }).catch(error => {
+          console.log('Initial auto-play was prevented. Will play on interaction:', error);
+        });
+      }
+    }
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('overlay');
+    const websiteContent = document.getElementById('website-content');
+    const hoaMusic = document.getElementById('hoa-music');
+    const roiMusic = document.getElementById('roi-music');
+
+    websiteContent.classList.add('blurred');
+
+    const handleInteraction = function() {
+      websiteContent.classList.remove('blurred');
+      overlay.style.display = 'none';
+
+      const activeTab = document.querySelector('.tabs .tab.active');
+      let musicToPlay = null;
+      if (activeTab && activeTab.dataset.tab === 'HOA') {
+        musicToPlay = roiMusic;
+      } else {
+        musicToPlay = hoaMusic;
+      }
+
+      if (musicToPlay && musicToPlay.paused) {
+        musicToPlay.play().catch(e => console.error('Error playing music on interaction:', e));
+      }
+
+      document.removeEventListener('keydown', handleInteractionOnEnter);
+      overlay.removeEventListener('click', handleInteraction);
     };
 
-    const playRoiMusic = function() {
-      hoaMusic.pause();
-      hoaMusic.currentTime = 0;
-      roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
-      currentMusic = roiMusic;
-    };
-
-    const updateVolume = function() {
-      if (currentMusic && volumeSlider) {
-        currentMusic.volume = volumeSlider.value;
+    const handleInteractionOnEnter = function(event) {
+      if (event.key === 'Enter') {
+        handleInteraction();
       }
     };
 
-    volumeSlider.addEventListener('input', updateVolume);
+    document.addEventListener('keydown', handleInteractionOnEnter);
+    overlay.addEventListener('click', handleInteraction);
 
-    if (HOATab) {
-      HOATab.addEventListener('click', function() {
-        if (currentMusic !== roiMusic) {
-          playRoiMusic();
-        }
+    const h2Elements = document.querySelectorAll('.card h2');
+    h2Elements.forEach(h2 => {
+      const text = h2.textContent;
+      h2.innerHTML = '';
+      text.split('').forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.textContent = letter;
+        span.style.setProperty('--index', index);
+        h2.appendChild(span);
       });
-    }
-
-    if (ownersTab) {
-      ownersTab.addEventListener('click', function() {
-        if (currentMusic !== hoaMusic) {
-          playHoaMusic();
-        }
-      });
-    }
-
-    const initialPlayPromise = hoaMusic.play();
-    if (initialPlayPromise !== undefined) {
-      initialPlayPromise.then(() => {
-        console.log('Initial audio playback started successfully');
-      }).catch(error => {
-        console.log('Initial auto-play was prevented. Will play on interaction:', error);
-      });
-    }
-  }
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const overlay = document.getElementById('overlay');
-  const websiteContent = document.getElementById('website-content');
-  const hoaMusic = document.getElementById('hoa-music');
-  const roiMusic = document.getElementById('roi-music');
-
-  websiteContent.classList.add('blurred');
-
-  const handleInteraction = function() {
-    websiteContent.classList.remove('blurred');
-    overlay.style.display = 'none';
-
-    const activeTab = document.querySelector('.tabs .tab.active');
-    let musicToPlay = null;
-    if (activeTab && activeTab.dataset.tab === 'HOA') {
-      musicToPlay = roiMusic;
-    } else {
-      musicToPlay = hoaMusic;
-    }
-
-    if (musicToPlay && musicToPlay.paused) {
-      musicToPlay.play().catch(e => console.error('Error playing music on interaction:', e));
-    }
-
-    document.removeEventListener('keydown', handleInteractionOnEnter);
-    overlay.removeEventListener('click', handleInteraction);
-  };
-
-  const handleInteractionOnEnter = function(event) {
-    if (event.key === 'Enter') {
-      handleInteraction();
-    }
-  };
-
-  document.addEventListener('keydown', handleInteractionOnEnter);
-  overlay.addEventListener('click', handleInteraction);
-
-  const h2Elements = document.querySelectorAll('.card h2');
-  h2Elements.forEach(h2 => {
-    const text = h2.textContent;
-    h2.innerHTML = '';
-    text.split('').forEach((letter, index) => {
-      const span = document.createElement('span');
-      span.textContent = letter;
-      span.style.setProperty('--index', index);
-      h2.appendChild(span);
     });
   });
-});
 </script>
+
 <script src="clown.js"></script>
 <script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const tabs = document.querySelectorAll('.tabs .tab');
-  const tabContents = document.querySelectorAll('.tab-content');
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tabs .tab');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tabContents.forEach(tc => {
-        tc.style.display = 'none';
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(tc => {
+          tc.style.display = 'none';
+        });
+        tab.classList.add('active');
+        const activeTab = tab.dataset.tab;
+        const activeContent = document.getElementById(activeTab);
+        if (activeContent) {
+          activeContent.style.display = 'block';
+        }
       });
-      tab.classList.add('active');
-      const activeTab = tab.dataset.tab;
-      const activeContent = document.getElementById(activeTab);
-      if (activeContent) {
-        activeContent.style.display = 'block';
-      }
     });
+
+    const videoInput = document.getElementById('video-upload');
+    const depotVideo = document.getElementById('depot-video');
+
+    if (videoInput && depotVideo) {
+      videoInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file && file.type === 'video/mp4') {
+          const url = URL.createObjectURL(file);
+          depotVideo.src = url;
+          depotVideo.style.display = 'block';
+          depotVideo.play().catch(e => console.error('Error playing uploaded video:', e));
+        } else {
+          alert('Please select a valid MP4 video file.');
+        }
+      });
+    }
   });
-
-  const videoInput = document.getElementById('video-upload');
-  const depotVideo = document.getElementById('depot-video');
-
-  if (videoInput && depotVideo) {
-    videoInput.addEventListener('change', function() {
-      const file = this.files[0];
-      if (file && file.type === 'video/mp4') {
-        const url = URL.createObjectURL(file);
-        depotVideo.src = url;
-        depotVideo.style.display = 'block';
-        depotVideo.play().catch(e => console.error('Error playing uploaded video:', e));
-      } else {
-        alert('Please select a valid MP4 video file.');
-      }
-    });
-  }
-});
 </script>
+
 </div>
 </body>
 </html>
