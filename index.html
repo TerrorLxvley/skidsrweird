@@ -4,7 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>skids are weird</title>
-<!-- ... (your preload and style code remains unchanged, omitted here for brevity) ... -->
+<!-- your preload links and styles -->
+<link rel="preload" href="css/9bmjY8CyQwFL.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/9bmjY8CyQwFL.css" /></noscript>
+<link rel="preload" href="css/JNS5A1dh7b4Q.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/JNS5A1dh7b4Q.css" /></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet" /></noscript>
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta name="theme-color" content="#000000" />
+
 <style>
 #overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -112,6 +121,7 @@
 <source src="images/SpitInMyFace.mp4" type="video/mp4" />
 </video>
 </div>
+<!-- Music controls -->
 <audio id="hoa-music" loop="" preload="auto" style="display:none;">
 <source src="media/hoa.ogg" type="audio/mpeg" />
 </audio>
@@ -135,9 +145,9 @@
 </nav>
 </header>
 <main>
+<!-- Owners Tab -->
 <div class="tab-content active" id="Owners">
 <div class="container">
-
 <!-- Existing owner cards -->
 <div class="card">
 <div class="profile-image"><img src="images/QLH3.png" alt="Profile 1" /></div>
@@ -175,7 +185,7 @@
 <a href="https://doxbin.com/user/extort1ion" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
 </div></div>
 
-<!-- ADD YOUR NEW PROFILE CARD RIGHT AFTER "S C A R S O N M y l e g s" -->
+<!-- YOUR NEW PROFILE CARD: placed right after "S C A R S O N M y l e g s" -->
 <div class="card">
 <div class="profile-image"><img src="images/ocewacky.png" alt="ocewacky" /></div>
 <h2><span>O</span><span>C</span><span>E</span><span>W</span><span>A</span><span>C</span><span>K</span><span>Y</span></h2>
@@ -186,10 +196,10 @@
 </div>
 
 </div>
-<!-- HOA tab -->
+<!-- HOA Section -->
 <div class="tab-content" id="HOA" style="display:none;">
 <div class="container">
-<!-- HOA cards here, as your code shows -->
+<!-- Your existing HOA cards as in your code -->
 <div class="card">
 <div class="profile-image"><img src="images/asdfhg.png" alt="Profile 1" /></div>
 <h2><span>L</span><span>e</span><span>x</span><span>i</span><span>e</span> <span>M</span><span>u</span><span>r</span><span>r</span><span>a</span><span>y</span></h2>
@@ -208,12 +218,13 @@
 <div class="card">
 <div class="profile-image"><img src="images/pedowedo.png" alt="Profile 4" /></div>
 <h2><span>R</span><span>Y</span><span>A</span><span>N</span></h2>
-<div class="description-container">Big fat gay pedo sending videos to 13 year old. <br /> ...</div>
+<div class="description-container">Big fat gay pedo sending videos to 13 year old. ...</div>
 </div>
 <!-- rest of your HOA cards -->
 </div>
 </div>
 </main>
+<!-- footer -->
 <footer>
 <div class="footer-content">
 <p>SKIDS</p>
@@ -222,16 +233,19 @@
 <!-- your scripts -->
 <script src="js/lL6UM7W4lao2.js"></script>
 <script>
-  // Your existing JS code for tabs, music, etc.
+  // Your tab toggle code (make sure it toggles display properly)
   document.addEventListener('DOMContentLoaded', function() {
-    // your tab toggle code
     const tabs = document.querySelectorAll('.tabs .tab');
     const tabContents = document.querySelectorAll('.tab-content');
     tabs.forEach(t => {
       t.addEventListener('click', () => {
+        // Remove active from all
         tabs.forEach(t => t.classList.remove('active'));
+        // Hide all tab contents
         tabContents.forEach(c => c.style.display='none');
+        // Add active to clicked tab
         t.classList.add('active');
+        // Show corresponding content
         const tabName = t.dataset.tab;
         const content = document.getElementById(tabName);
         if(content) content.style.display='block';
