@@ -31,7 +31,6 @@
 @keyframes neon-glow {
   0% { border-color: transparent; box-shadow: none; }
   50% { border-color: #00ffff; box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; }
-  100% { border-color: transparent; box-shadow: none; }
 }
 .volume-control label { color: #fff; margin-right: 10px; }
 .volume-control input[type=range] { width: 100px; }
@@ -145,6 +144,7 @@
 <main>
 <div class="tab-content active" id="Owners">
 <div class="container">
+
 <div class="card">
 <div class="profile-image"><img src="images/QLH3.png" alt="Profile 1" /></div>
 <h2><span>ժ</span><span>ҽ</span><span>ą</span><span>ժ</span></h2>
@@ -180,12 +180,14 @@
 <div class="social-icons">
 <a href="https://doxbin.com/user/extort1ion" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
 </div></div>
+<!-- NEW PROFILE CARD FOR OceWacky -->
 <div class="card">
-<div class="profile-image"><img src="images/kirtojp.jpg" alt="ocewacky" /></div>
+<div class="profile-image"><img src="images/kirtojp.jpg" alt="OceWacky" /></div>
 <h2><span>O</span><span>C</span><span>E</span><span>W</span><span>A</span><span>C</span><span>K</span><span>Y</span></h2>
 <div class="description-container">d1sturbia on top</div>
 <div class="social-icons">
 <a href="#" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
+</div>
 </div>
 </div>
 </div>
@@ -215,138 +217,24 @@
 </div>
 </main>
 <footer>
-<div class="footer-content">
-<p>SKIDS</p>
-</div>
+<div class="footer-content"><p>SKIDS</p></div>
 </footer>
 <script src="js/lL6UM7W4lao2.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const hoaMusic = document.getElementById('hoa-music');
-    const roiMusic = document.getElementById('roi-music');
-    const volumeSlider = document.getElementById('volume-slider');
-    const HOATab = document.querySelector('.tab[data-tab="HOA"]');
-    const ownersTab = document.querySelector('.tab[data-tab="Owners"]');
-    let currentMusic = hoaMusic;
-    const initialVolume = 0.6;
-    if (hoaMusic && roiMusic && volumeSlider) {
-      volumeSlider.value = initialVolume;
-      hoaMusic.volume = initialVolume;
-      roiMusic.volume = initialVolume;
-      const playHoaMusic = function() {
-        roiMusic.pause();
-        roiMusic.currentTime=0;
-        hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
-        currentMusic=hoaMusic;
-      };
-      const playRoiMusic = function() {
-        hoaMusic.pause();
-        hoaMusic.currentTime=0;
-        roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
-        currentMusic=roiMusic;
-      };
-      const updateVolume = function() {
-        if(currentMusic && volumeSlider) currentMusic.volume=volumeSlider.value;
-      };
-      volumeSlider.addEventListener('input', updateVolume);
-      if (HOATab) {
-        HOATab.addEventListener('click', () => {
-          if (currentMusic!==roiMusic) { playRoiMusic(); }
-        });
-      }
-      if (ownersTab) {
-        ownersTab.addEventListener('click', () => {
-          if (currentMusic!==hoaMusic) { playHoaMusic(); }
-        });
-      }
-      hoaMusic.play().catch(e => console.log('Auto-play prevented'));
-    }
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const overlay=document.getElementById('overlay');
-    const websiteContent=document.getElementById('website-content');
-    const hoaMusic=document.getElementById('hoa-music');
-    const roiMusic=document.getElementById('roi-music');
-    websiteContent.classList.add('blurred');
-    const handleInteraction=function() {
-      websiteContent.classList.remove('blurred');
-      overlay.style.display='none';
-      const activeTab=document.querySelector('.tabs .tab.active');
-      let musicToPlay=null;
-      if (activeTab && activeTab.dataset.tab==='HOA') { musicToPlay=roiMusic; }
-      else { musicToPlay=hoaMusic; }
-      if (musicToPlay && musicToPlay.paused) { musicToPlay.play().catch(e => console.error('Error on interaction:', e)); }
-      document.removeEventListener('keydown', handleInteractionOnEnter);
-      overlay.removeEventListener('click', handleInteraction);
-    };
-    const handleInteractionOnEnter=function(e) { if(e.key==='Enter'){handleInteraction();} };
-    document.addEventListener('keydown', handleInteractionOnEnter);
-    overlay.addEventListener('click', handleInteraction);
-    document.querySelectorAll('.card h2').forEach(h2 => {
-      const txt=h2.textContent;
-      h2.innerHTML='';
-      txt.split('').forEach((letter,i) => {
-        const span=document.createElement('span');
-        span.textContent=letter;
-        span.style.setProperty('--index',i);
-        h2.appendChild(span);
+  const tabs=document.querySelectorAll('.tabs .tab');
+  const tabContents=document.querySelectorAll('.tab-content');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tabContents.forEach(c => {
+        c.style.display='none';
       });
+      t.classList.add('active');
+      const tabName=t.dataset.tab;
+      const content=document.getElementById(tabName);
+      if(content) content.style.display='block';
     });
   });
 </script>
-<script src="clown.js"></script>
-<script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const tabs=document.querySelectorAll('.tabs .tab');
-    const tabContents=document.querySelectorAll('.tab-content');
-    tabs.forEach(t => {
-      t.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(c => c.style.display='none');
-        t.classList.add('active');
-        const tabName=t.dataset.tab;
-        const content=document.getElementById(tabName);
-        if(content) content.style.display='block';
-      });
-    });
-    const videoInput=document.getElementById('video-upload');
-    const depotVideo=document.getElementById('depot-video');
-    if(videoInput && depotVideo){
-      videoInput.addEventListener('change', function() {
-        const file=this.files[0];
-        if(file && file.type==='video/mp4'){
-          const url=URL.createObjectURL(file);
-          depotVideo.src=url;
-          depotVideo.style.display='block';
-          depotVideo.play().catch(e => console.error('Error playing uploaded video:', e));
-        } else {
-          alert('Please select a valid MP4 video file.');
-        }
-      });
-    }
-  });
-</script>
-<div class="tab-content" id="Depot" style="display:none;">
-<div class="container" style="flex-direction: column; align-items: center; padding:20px;">
-<h2 style="color:#00f; font-weight: bold;">Ryan Brookes</h2>
-<div style="border: 4px solid #0ff; padding: 8px; border-radius: 16px; display:inline-block; position:relative; animation: waterRipple 4s ease-in-out infinite;">
-  <video style="width:250px; height:auto; display:block; border-radius:8px;" controls>
-    <source src="media/jhjhjh.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</div>
-</div>
-</div>
-<style>
-@keyframes waterRipple {
-  0% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  25% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  50% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  75% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  100% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-}
-</style>
-</div>
+</body>
+</html>
