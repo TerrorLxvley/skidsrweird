@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skids.live</title>
+<link rel="preload" href="css/9bmjY8CyQwFL.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/9bmjY8CyQwFL.css" /></noscript>
+<link rel="preload" href="css/JNS5A1dh7b4Q.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/JNS5A1dh7b4Q.css" /></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet" /></noscript>
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta name="theme-color" content="#000000" />
+
+<style>
+#overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8); color: #fff; font-size: 2em; display: flex;
+  justify-content: center; align-items: center; z-index: 1000; cursor: pointer;
+}
+.blurred {
+  filter: blur(25px); pointer-events: none;
+}
+.volume-control {
+  position: fixed; bottom: 13px; right: 13px; z-index: 1001;
+  display: flex; align-items: center; background-color: rgba(0,0,0,0.4);
+  padding: 10px; border-radius: 5px; border: 2px solid transparent;
+  animation: neon-glow 2s infinite alternate;
+}
+@keyframes neon-glow {
+  0% { border-color: transparent; box-shadow: none; }
+  50% { border-color: #00ffff; box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; }
+  100% { border-color: transparent; box-shadow: none; }
+}
+.volume-control label { color: #fff; margin-right: 10px; }
+.volume-control input[type=range] { width: 100px; }
+
+@keyframes rainbow-glow {
+  0% { border-color: transparent; box-shadow: none; }
+  20% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+  40% { border-color: #ffff00; box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00; }
+  60% { border-color: #00ff00; box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+  80% { border-color: #0000ff; box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff; }
+  100% { border-color: #8b00ff; box-shadow: 0 0 10px #8b00ff, 0 0 20px #8b00ff; }
+}
+.card:hover {
+  transform: scale(1.05);
+  animation: rainbow-glow 2s infinite linear;
+  transition: all 0.3s ease-in-out;
+}
+.tabs .tab.active { border-bottom: 2px solid #00ffff; }
+@keyframes wave-letters {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes rainbow-letter-color {
+  0% { color: #ff0000; }
+  14% { color: #ff7f00; }
+  28% { color: #ffff00; }
+  42% { color: #00ff00; }
+  56% { color: #0000ff; }
+  70% { color: #4b0082; }
+  84% { color: #8b00ff; }
+  100% { color: #ff0000; }
+}
+.card h2 { display: flex; justify-content: center; }
+.card h2 span {
+  display: inline-block;
+  animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear;
+  animation-delay: calc(var(--index) * 0.1s);
+}
+.skid-behind {
+  position: absolute; top:50%; left:50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em; font-weight: bold; opacity: 0; z-index: -1; pointer-events: none; animation: none;
+}
+.card {
+  position: relative; overflow: hidden; min-height: 350px; padding-bottom: 20px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.container {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+}
+.description-container {
+  display: block; width: calc(100% - 20px); height: 100px; padding: 10px; margin-top:10px;
+  box-sizing: border-box; border: none; outline: none; background-color: rgba(0,0,0,0.3);
+  color: #fff; font-family: inherit; font-size: 1em; overflow-y: auto; overflow-x: hidden;
+}
+.description-container::-webkit-scrollbar {
+  width: 12px;
+}
+.description-container::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+.description-container::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}
+.description-container::-webkit-scrollbar-thumb:hover {
+  background: #cc0000;
+}
+</style>
+</head>
+<body>
+<div id="overlay">skiddie winks are weird ( press enter )</div>
+<div id="website-content">
+<div id="custom-cursor"></div>
+<div class="video-background" style="will-change:opacity,transform;">
+<video autoplay="" muted="" loop="" id="background-video" preload="auto">
+<source src="images/SpitInMyFace.mp4" type="video/mp4" />
+</video>
+</div>
+
+<audio id="hoa-music" loop preload="auto" style="display:none;">
+  <source src="media/hoa.ogg" type="audio/mpeg" />
+</audio>
+
+<audio id="roi-music" loop preload="auto" style="display:none;">
+<source src="media/Roi.ogg" type="audio/ogg" />
+</audio>
+
+<div class="volume-control">
+<label for="volume-slider">Volume:</label>
+<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.6" />
+</div>
+
+<header>
+<nav>
+<ul class="tabs">
+<li class="tab active" data-tab="Owners">Owners</li>
+<li class="tab" data-tab="HOA">HOA</li>
+<li class="tab" data-tab="Depot">Depot</li>
+</ul>
+<div class="glitch-container">
+<img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectstart="return false" onmousedown="return false;">
+</div>
+</nav>
+</header>
+
+<main>
+<div class="tab-content active" id="Owners">
+<div class="container">
+
+<div class="card">
+<div class="profile-image"><img src="images/QLH3.png" alt="Profile 1" /></div>
+<h2><span>ժ</span><span>ҽ</span><span>ą</span><span>ժ</span></h2>
+<div class="description-container">super scawy gang monkey<br /><br /></div>
+<div class="social-icons">
+<a href="https://doxbin.net/user/globe" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
+</div></div>
+<div class="card">
+<div class="profile-image"><img src="images/CXwdOiyacj13.png" alt="Profile 2" /></div>
+<h2><span>F</span><span>l</span><span>i</span><span>p</span><span>A</span><span>C</span><span>o</span><span>i</span><span>n</span></h2>
+<div class="description-container">Professional Lego Hacker<br /><br /></div>
+<div class="social-icons">
+<a href="https://doxbin.net/user/chasity" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
+</div></div>
+<div class="card">
+<div class="profile-image"><img src="images/aiosdygfOD.png" alt="Profile 3" /></div>
+<h2><span>A</span><span>N</span><span>G</span><span>E</span><span>L</span></h2>
+<div class="description-container">#WeLoveYouZombie<br /><br /></div>
+<div class="social-icons">
+<a href="https://doxbin.com/" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
+</div></div>
+<div class="card">
+<div class="profile-image"><img src="images/sdutyfsdf.png" alt="Profile 4" /></div>
+<h2><span>C</span><span>X</span><span>D</span></h2>
+<div class="description-container">anti extortion/Pedophilia<br /><br /></div>
+<div class="social-icons">
+<a href="https://doxbin.com/user/CXD" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
+</div></div>
+<div class="card">
+<div class="profile-image"><img src="images/QLH2.gif" alt="Profile 5" /></div>
+<h2><span>L</span><span>K</span><span>4</span><span>7</span></h2>
+<div class="description-container">special dox agent/ Owner<br /><br /></div>
+<div class="social-icons">
+<a href="https://doxbin.com/user/extort1ion" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
+</div></div>
+</div>
+</div> 
+
+<div class="tab-content" id="HOA" style="display:none;">
+<div class="container">
+
+<div class="card">
+<div class="profile-image"><img src="images/asdfhg.png" alt="Profile 1" /></div>
+<h2><span>L</span><span>e</span><span>x</span><span>i</span><span>e</span> <span>M</span><span>u</span><span>r</span><span>r</span><span>a</span><span>y</span></h2>
+<div class="description-container">Home:28 Village Hill,Straid,Ballyclare BT39 9WQ<br /><br />Yuzzi a real hoe.</div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/hghghghg.png" alt="Profile 2" /></div>
+<h2><span>M</span><span>Y</span><span>_</span><span>M</span><span>E</span></h2>
+<div class="description-container">IP address<br />68.231.235.42<br />Continent<br />North America<br />Country by IP<br />United States<br />City by IP<br />Norfolk<br />Latitude<br />36.8508<br />Longitude<br />-76.2859<br />Accuracy<br />~<br />50 000<br />meters<br />State / Region<br />Virginia<br />District / County<br />Norfolk<br />Zip code<br />23514<br />TimeZone<br />America/New_York (UTC -04:00)<br />Local time<br />April 27, 2025 at 6:31 PM<br />ISP / Provider<br />Cox Communications Inc.<br />Organization<br />-<br />Connection<br />Corporate<br />European union<br />No<br />Weather station<br />USVA0557<br />16 year old GLAZER</div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/jkjk.png" alt="Profile 3" /></div>
+<h2><span>H</span><span>Y</span><span>P</span><span>N</span></span>O</span></span>T</span></span>I</span></span>C</span></h2>
+<div class="description-container">HYPNOTIC ROSE - 99.53.206.138<br /><br />Date/Time 2025-02-20 20:55:45 UTC<br />IP Address 99.53.206.138<br />Country<br />United States, Fort Worth<br />Browser Chrome (91.0.4472.77)<br />Operating System Windows 10 x64<br />User Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36<br />Referring URL no referrer<br />Host Name 99-53-206-138.lightspeed.hstntx.sbcglobal.net<br />ISP ATT-INTERNET4<br /></div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/pedowedo.png" alt="Profile 4" /></div>
+<h2><span>R</span><span>Y</span><span>A</span><span>N</span></h2>
+<div class="description-container">———————————————————————<br /><br />Big fat gay pedo sending videos to 13 year old. <br />———————————————————————<br />DOX- <br />Name- Ryan Brookes<br />Age - 18<br />College - Cheshire college south and west<br />College number - 01270 654654<br />———————————————————————<br />Socials <br /><br />  ▄︻デ══━一<br />Instagram - ryanbrookes90<br />Snapchat - ryanb2023_17<br />TikTok- itzzzryann16<br />Facebook - Ryan Brookes <br /><br />———————————————————————<br />SHITTY FAMILY TREE<br />⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀<br />⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+Mummy<br />Name - Claire Brookes<br />Date of birth - 11th June 1987<br />Location - crewe <br />Job - a cleaner for Cheshire college south and west. <br /><br />Daddy<br />UNKNOWN (ran away)<br /> <br />Other family members-<br /> <br />Josh Brookes<br />Location - crewe<br />Charlotte Brookes<br />Location - Crewe<br />Her uncle - Michael Mulk Mulliner<br />Location - jail<br /> <br />Dead ass family no wonder.<br />Honestly KYS RYAN<br />———————————————————————<br />Associated Emails:<br />Carrier:    Hutchison 3G UK<br />Line Type:    Wireless<br />User Activity:    Enterprise L4+ required.<br />Leaked Online:    false<br />Spammer:    false<br />Country:    GB  GB<br />City:    N/A<br />Region:    United Kingdom<br />Zip Code:    N/A<br />Timezone:    Europe/London<br />Dialing Code:    44<br />———————————————————————<br />FUCK ———————————————————————<br />IP Address    90.212.231.70<br />———————————————————————<br />Country<br />United Kingdom,<br />———————————————————————<br />Browser    Mobile Safari (18.1)<br />Operating System    iOS 18.1<br />Device    Apple iPhone<br />———————————————————————<br />User Agent    Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1<br />———————————————————————<br />ISP    Sky UK Limited<br />———————————————————————<br /></div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/kpkp.webp" alt="Profile 5" /></div>
+<h2><span>S</span><span>A</span><span>S</span><span>S</span></span>Y</span></span>_</span></span>S</span></span>N</span></span>I</span></span>P</span></span>E</span></span>R</span></h2>
+<div class="description-container">73.23.179.147<br><br>
+Decimal:1226290067<br>
+
+Hostname:c-73-23-179-147.hsd1.fl.comcast.net<br>
+
+ASN:7922<br>
+
+ISP:Comcast Cable Communications LLC<br>
+
+Services:None detected<br>
+
+Country:United States<br>
+
+State/Region:Florida<br>
+
+City:Marco Island<br>
+
+Latitude:25.9726 (25° 58′ 21.36″ N)<br>
+
+Longitude:-81.7290 (81° 43′ 44.33″ W)<br>
+twicth:sassy_sniper54321<br>
+yt:Emi’s rides<br>
+xbox:Chicken1768<br>
+marco island<br>
+fl<br>
+969761479748378695<br>
+vrchat user<br>
+sassy_sniper<br>
+[+] Isp        : Comcast Cable Communications<br>
+    [+] Org        : Comcast IP Services, L.L.C.<br>
+    [+] As         : AS7922 Comcast Cable Communications, LLC<br></div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/bleu.webp" alt="Profile 6" /></div>
+<h2><span>B</span><span>L</span><span>E</span><span>U<span></span>B</span></span>R</span></span>O</span></span>U</span></span>G</span></span>H</span></h2>
+<div class="description-container">random skid that says i cant fed him anways do what u want with this info<br /><br />
+  5 cedar Road SO45 3PG<br />
+</div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/Image.png" alt="Profile 7" /></div>
+<h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+<div class="description-container">description<br /><br /></div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/Image.png" alt="Profile 8" /></div>
+<h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+<div class="description-container">description<br /><br /></div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/Image.png" alt="Profile 9" /></div>
+<h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+<div class="description-container">description<br /><br /></div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+<div class="card">
+<div class="profile-image"><img src="images/Image.png" alt="Profile 10" /></div>
+<h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
+<div class="description-container">description<br /><br /></div>
+<div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
+</div> 
+</div> 
+</main>
+<footer>
+<div class="footer-content">
+<p>SKIDS</p>
+</div>
+</footer>
+
+<script src="js/lL6UM7W4lao2.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hoaMusic = document.getElementById('hoa-music');
+    const roiMusic = document.getElementById('roi-music');
+    const volumeSlider = document.getElementById('volume-slider');
+    const HOATab = document.querySelector('.tab[data-tab="HOA"]');
+    const ownersTab = document.querySelector('.tab[data-tab="Owners"]');
+    let currentMusic = hoaMusic;
+    const initialVolume = 0.6;
+    if (hoaMusic && roiMusic && volumeSlider) {
+      volumeSlider.value = initialVolume;
+      hoaMusic.volume = initialVolume;
+      roiMusic.volume = initialVolume;
+      
+
+      const playHoaMusic = function() {
+        roiMusic.pause();
+        roiMusic.currentTime=0;
+        hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
+        currentMusic=hoaMusic;
+      };
+      
+
+      const playRoiMusic = function() {
+        hoaMusic.pause();
+        hoaMusic.currentTime=0;
+        roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
+        currentMusic=roiMusic;
+      };
+      
+
+      const updateVolume = function() {
+        if(currentMusic && volumeSlider) currentMusic.volume=volumeSlider.value;
+      };
+
+      volumeSlider.addEventListener('input', updateVolume);
+      
+      if (HOATab) {
+        HOATab.addEventListener('click', () => {
+          if (currentMusic!==roiMusic) { playRoiMusic(); }
+        });
+      }
+      if (ownersTab) {
+        ownersTab.addEventListener('click', () => {
+          if (currentMusic!==hoaMusic) { playHoaMusic(); }
+        });
+      }
+
+      hoaMusic.play().catch(e => console.log('Auto-play prevented'));
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const overlay=document.getElementById('overlay');
+    const websiteContent=document.getElementById('website-content');
+    const hoaMusic=document.getElementById('hoa-music');
+    const roiMusic=document.getElementById('roi-music');
+    websiteContent.classList.add('blurred');
+    const handleInteraction=function() {
+      websiteContent.classList.remove('blurred');
+      overlay.style.display='none';
+
+
+      const activeTab=document.querySelector('.tabs .tab.active');
+      let musicToPlay=null;
+      if (activeTab && activeTab.dataset.tab==='HOA') { 
+        musicToPlay=roiMusic; 
+      } else { 
+        musicToPlay=hoaMusic; 
+      }
+      
+      if (musicToPlay && musicToPlay.paused) { 
+        musicToPlay.play().catch(e => console.error('Error on interaction:', e)); 
+      }
+      document.removeEventListener('keydown', handleInteractionOnEnter);
+      overlay.removeEventListener('click', handleInteraction);
+    };
+    const handleInteractionOnEnter=function(e) { if(e.key==='Enter'){handleInteraction();} };
+    document.addEventListener('keydown', handleInteractionOnEnter);
+    overlay.addEventListener('click', handleInteraction);
+    
+
+    document.querySelectorAll('.card h2').forEach(h2 => {
+      const txt=h2.textContent;
+      h2.innerHTML='';
+      txt.split('').forEach((letter,i) => {
+        const span=document.createElement('span');
+        span.textContent=letter;
+        span.style.setProperty('--index',i);
+        h2.appendChild(span);
+      });
+    });
+  });
+</script>
+<script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs=document.querySelectorAll('.tabs .tab');
+    const tabContents=document.querySelectorAll('.tab-content');
+    tabs.forEach(t => {
+      t.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.style.display='none');
+        t.classList.add('active');
+        const tabName=t.dataset.tab;
+        const content=document.getElementById(tabName);
+        if(content) content.style.display='block';
+      });
+    });
+    const videoInput=document.getElementById('video-upload');
+    const depotVideo=document.getElementById('depot-video');
+    if(videoInput && depotVideo){
+      videoInput.addEventListener('change', function() {
+        const file=this.files[0];
+        if(file && file.type==='video/mp4'){
+          const url=URL.createObjectURL(file);
+          depotVideo.src=url;
+          depotVideo.style.display='block';
+          depotVideo.play().catch(e => console.error('Error playing uploaded video:', e));
+        } else {
+          alert('Please select a valid MP4 video file.');
+        }
+      });
+    }
+  });
+</script>
+
+<div class="tab-content" id="Depot" style="display:none;">
+<div class="container" style="flex-direction: column; align-items: center; padding:20px;">
+<h2 style="color:#00f; font-weight: bold;">Ryan Brookes</h2>
+<div style="border: 4px solid #0ff; padding: 8px; border-radius: 16px; display:inline-block; position:relative; animation: waterRipple 4s ease-in-out infinite;">
+  <video style="width:250px; height:auto; display:block; border-radius:8px;" controls>
+    <source src="media/jhjhjh.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+</div>
+</div>
+<style>
+@keyframes waterRipple {
+  0% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
+  25% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
+  50% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
+  75% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
+  100% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
+}
+</style>
+</div>
+
+<script>
+const titles = [
+  "Skids.live",
+  "Skids.lol",
+  "Skidsrweird",
+  "CXD ran you",
+  "LK12 ran you",
+  "skid",
+  "skids.gg",
+  "skids.org",
+  "skids.com",
+  "skids.live",
+  "Dead Ran you"
+];
+
+let currentIndex = 0;
+
+
+function cycleTitle() {
+  document.title = titles[currentIndex];
+  currentIndex = (currentIndex + 1) % titles.length;
+}
+
+
+setInterval(cycleTitle, 3000);
+
+
+cycleTitle();
+</script>
+
+</body>
+</html>
