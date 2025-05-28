@@ -46,8 +46,10 @@
 }
 .card:hover {
   transform: scale(1.05);
-  animation: rainbow-glow 2s infinite linear;
+  border: 2px solid red;
+  box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
   transition: all 0.3s ease-in-out;
+  animation: none;
 }
 .tabs .tab.active { border-bottom: 2px solid #00ffff; }
 @keyframes wave-letters {
@@ -74,32 +76,6 @@
   position: absolute; top:50%; left:50%;
   transform: translate(-50%, -50%);
   font-size: 3em; font-weight: bold; opacity: 0; z-index: -1; pointer-events: none; animation: none;
-}
-.card {
-  position: relative; overflow: hidden; min-height: 350px; padding-bottom: 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.container {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
-}
-.description-container {
-  display: block; width: calc(100% - 20px); height: 100px; padding: 10px; margin-top:10px;
-  box-sizing: border-box; border: none; outline: none; background-color: rgba(0,0,0,0.3);
-  color: #fff; font-family: inherit; font-size: 1em; overflow-y: auto; overflow-x: hidden;
-}
-.description-container::-webkit-scrollbar {
-  width: 12px;
-}
-.description-container::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.2);
-  border-radius: 10px;
-}
-.description-container::-webkit-scrollbar-thumb {
-  background: #ff0000;
-  border-radius: 10px;
-}
-.description-container::-webkit-scrollbar-thumb:hover {
-  background: #cc0000;
 }
 </style>
 </head>
@@ -210,23 +186,14 @@ Mummy<br />Name - Claire Brookes<br />Date of birth - 11th June 1987<br />Locati
 <h2><span>S</span><span>A</span><span>S</span><span>S</span></span>Y</span></span>_</span></span>S</span></span>N</span></span>I</span></span>P</span></span>E</span></span>R</span></h2>
 <div class="description-container">73.23.179.147<br><br>
 Decimal:1226290067<br>
-
 Hostname:c-73-23-179-147.hsd1.fl.comcast.net<br>
-
 ASN:7922<br>
-
 ISP:Comcast Cable Communications LLC<br>
-
 Services:None detected<br>
-
 Country:United States<br>
-
 State/Region:Florida<br>
-
 City:Marco Island<br>
-
 Latitude:25.9726 (25° 58′ 21.36″ N)<br>
-
 Longitude:-81.7290 (81° 43′ 44.33″ W)<br>
 twicth:sassy_sniper54321<br>
 yt:Emi’s rides<br>
@@ -290,30 +257,22 @@ sassy_sniper<br>
       volumeSlider.value = initialVolume;
       hoaMusic.volume = initialVolume;
       roiMusic.volume = initialVolume;
-      
-
       const playHoaMusic = function() {
         roiMusic.pause();
         roiMusic.currentTime=0;
         hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
         currentMusic=hoaMusic;
       };
-      
-
       const playRoiMusic = function() {
         hoaMusic.pause();
         hoaMusic.currentTime=0;
         roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
         currentMusic=roiMusic;
       };
-      
-
       const updateVolume = function() {
         if(currentMusic && volumeSlider) currentMusic.volume=volumeSlider.value;
       };
-
       volumeSlider.addEventListener('input', updateVolume);
-      
       if (HOATab) {
         HOATab.addEventListener('click', () => {
           if (currentMusic!==roiMusic) { playRoiMusic(); }
@@ -324,7 +283,6 @@ sassy_sniper<br>
           if (currentMusic!==hoaMusic) { playHoaMusic(); }
         });
       }
-
       hoaMusic.play().catch(e => console.log('Auto-play prevented'));
     }
   });
@@ -339,8 +297,6 @@ sassy_sniper<br>
     const handleInteraction=function() {
       websiteContent.classList.remove('blurred');
       overlay.style.display='none';
-
-
       const activeTab=document.querySelector('.tabs .tab.active');
       let musicToPlay=null;
       if (activeTab && activeTab.dataset.tab==='HOA') { 
@@ -348,7 +304,6 @@ sassy_sniper<br>
       } else { 
         musicToPlay=hoaMusic; 
       }
-      
       if (musicToPlay && musicToPlay.paused) { 
         musicToPlay.play().catch(e => console.error('Error on interaction:', e)); 
       }
@@ -358,8 +313,6 @@ sassy_sniper<br>
     const handleInteractionOnEnter=function(e) { if(e.key==='Enter'){handleInteraction();} };
     document.addEventListener('keydown', handleInteractionOnEnter);
     overlay.addEventListener('click', handleInteraction);
-    
-
     document.querySelectorAll('.card h2').forEach(h2 => {
       const txt=h2.textContent;
       h2.innerHTML='';
@@ -404,51 +357,5 @@ sassy_sniper<br>
     }
   });
 </script>
-
-  </video>
-</div>
-</div>
-</div>
-<style>
-@keyframes waterRipple {
-  0% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  25% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  50% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  75% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  100% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-}
-</style>
-</div>
-
-<script>
-const titles = [
-  "Skids.live",
-  "Skids.lol",
-  "Skidsrweird",
-  "CXD ran you",
-  "LK12 ran you",
-  "skid",
-  "skids.gg",
-  "skids.org",
-  "skids.com",
-  "skids.live",
-  "Dead Ran you"
-];
-
-let currentIndex = 0;
-
-
-function cycleTitle() {
-  document.title = titles[currentIndex];
-  currentIndex = (currentIndex + 1) % titles.length;
-}
-
-
-setInterval(cycleTitle, 3000);
-
-
-cycleTitle();
-</script>
-
 </body>
 </html>
