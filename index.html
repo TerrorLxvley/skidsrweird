@@ -46,7 +46,9 @@
 }
 .card:hover {
   transform: scale(1.05);
-  animation: rainbow-glow 2s infinite linear;
+  /* Remove the rainbow glow animation and add a red border instead */
+  /* animation: rainbow-glow 2s infinite linear; */
+  border: 3px solid red; /* Add a solid red border */
   transition: all 0.3s ease-in-out;
 }
 .tabs .tab.active { border-bottom: 2px solid #00ffff; }
@@ -340,7 +342,6 @@ sassy_sniper<br>
       websiteContent.classList.remove('blurred');
       overlay.style.display='none';
 
-
       const activeTab=document.querySelector('.tabs .tab.active');
       let musicToPlay=null;
       if (activeTab && activeTab.dataset.tab==='HOA') { 
@@ -358,7 +359,6 @@ sassy_sniper<br>
     const handleInteractionOnEnter=function(e) { if(e.key==='Enter'){handleInteraction();} };
     document.addEventListener('keydown', handleInteractionOnEnter);
     overlay.addEventListener('click', handleInteraction);
-    
 
     document.querySelectorAll('.card h2').forEach(h2 => {
       const txt=h2.textContent;
@@ -403,51 +403,6 @@ sassy_sniper<br>
       });
     }
   });
-</script>
-
-  </video>
-</div>
-</div>
-</div>
-<style>
-@keyframes waterRipple {
-  0% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  25% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  50% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  75% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  100% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-}
-</style>
-</div>
-
-<script>
-const titles = [
-  "Skids.live",
-  "Skids.lol",
-  "Skidsrweird",
-  "CXD ran you",
-  "LK12 ran you",
-  "skid",
-  "skids.gg",
-  "skids.org",
-  "skids.com",
-  "skids.live",
-  "Dead Ran you"
-];
-
-let currentIndex = 0;
-
-
-function cycleTitle() {
-  document.title = titles[currentIndex];
-  currentIndex = (currentIndex + 1) % titles.length;
-}
-
-
-setInterval(cycleTitle, 3000);
-
-
-cycleTitle();
 </script>
 
 </body>
