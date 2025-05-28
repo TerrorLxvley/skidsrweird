@@ -36,20 +36,6 @@
 .volume-control label { color: #fff; margin-right: 10px; }
 .volume-control input[type=range] { width: 100px; }
 
-@keyframes rainbow-glow {
-  0% { border-color: transparent; box-shadow: none; }
-  20% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
-  40% { border-color: #ffff00; box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00; }
-  60% { border-color: #00ff00; box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
-  80% { border-color: #0000ff; box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff; }
-  100% { border-color: #8b00ff; box-shadow: 0 0 10px #8b00ff, 0 0 20px #8b00ff; }
-}
-.card:hover {
-  transform: scale(1.05);
-  border: 3px solid red;
-  transition: all 0.3s ease-in-out;
-}
-.tabs .tab.active { border-bottom: 2px solid #00ffff; }
 @keyframes wave-letters {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
@@ -64,15 +50,18 @@
   84% { color: #8b00ff; }
   100% { color: #ff0000; }
 }
-.card h2 {
-  display: flex; 
-  justify-content: center;
+.card:hover {
+  transform: scale(1.05);
+  border: 3px solid red;
+  transition: all 0.3s ease-in-out;
 }
-.card h2 span {
+.tabs .tab.active { border-bottom: 2px solid #00ffff; }
+h2 { display: flex; justify-content: center; }
+h2 span {
   display: inline-block;
   animation: wave-letters 1s infinite ease-in-out;
   animation-delay: calc(var(--index) * 0.1s);
-  color: red; /* changed from rainbow to solid red */
+  color: red; /* solid red for names */
 }
 </style>
 </head>
@@ -114,8 +103,7 @@
 
 <main>
 <div class="tab-content active" id="Owners">
-<div class="container">
-
+<div class="container" style="display:flex; flex-wrap:wrap; justify-content: center;">
 <div class="card">
 <div class="profile-image"><img src="images/QLH3.png" alt="Profile 1" /></div>
 <h2><span>ժ</span><span>ҽ</span><span>ą</span><span>ժ</span></h2>
@@ -154,8 +142,7 @@
 </div> 
 
 <div class="tab-content" id="HOA" style="display:none;">
-<div class="container">
-
+<div class="container" style="display:flex; flex-wrap:wrap; justify-content: center;">
 <div class="card">
 <div class="profile-image"><img src="images/asdfhg.png" alt="Profile 1" /></div>
 <h2><span>L</span><span>e</span><span>x</span><span>i</span><span>e</span> <span>M</span><span>u</span><span>r</span><span>r</span><span>a</span><span>y</span></h2>
@@ -180,44 +167,34 @@ Mummy<br />Name - Claire Brookes<br />Date of birth - 11th June 1987<br />Locati
 <div class="card">
 <div class="profile-image"><img src="images/kpkp.webp" alt="Profile 5" /></div>
 <h2><span>S</span><span>A</span><span>S</span><span>S</span></span>Y</span></span>_</span></span>S</span></span>N</span></span>I</span></span>P</span></span>E</span></span>R</span></h2>
-<div class="description-container">73.23.179.147<br><br>
-Decimal:1226290067<br>
-
-Hostname:c-73-23-179-147.hsd1.fl.comcast.net<br>
-
-ASN:7922<br>
-
-ISP:Comcast Cable Communications LLC<br>
-
-Services:None detected<br>
-
-Country:United States<br>
-
-State/Region:Florida<br>
-
-City:Marco Island<br>
-
-Latitude:25.9726 (25° 58′ 21.36″ N)<br>
-
-Longitude:-81.7290 (81° 43′ 44.33″ W)<br>
-twicth:sassy_sniper54321<br>
-yt:Emi’s rides<br>
-xbox:Chicken1768<br>
-marco island<br>
-fl<br>
-969761479748378695<br>
-vrchat user<br>
-sassy_sniper<br>
-[+] Isp        : Comcast Cable Communications<br>
-    [+] Org        : Comcast IP Services, L.L.C.<br>
-    [+] As         : AS7922 Comcast Cable Communications, LLC<br></div>
+<div class="description-container">73.23.179.147<br /><br />
+Decimal:1226290067<br />
+Hostname:c-73-23-179-147.hsd1.fl.comcast.net<br />
+ASN:7922<br />
+ISP: Comcast Cable Communications LLC<br />
+Services:None detected<br />
+Country: United States<br />
+State/Region: Florida<br />
+City: Marco Island<br />
+Latitude: 25.9726<br />
+Longitude: -81.7290<br />
+twicth: sassy_sniper54321<br />
+yt: Emi’s rides<br />
+xbox: Chicken1768<br />
+marco island<br />
+fl<br />
+969761479748378695<br />
+vrchat user<br />
+sassy_sniper<br />
+[+] Isp: Comcast Cable Communications<br />
+[+] Org: Comcast IP Services, L.L.C.<br />
+[+] As: AS7922 Comcast Cable Communications, LLC<br />
+</div>
 <div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
 <div class="card">
 <div class="profile-image"><img src="images/bleu.webp" alt="Profile 6" /></div>
-<h2><span>B</span><span>L</span><span>E</span><span>U<span></span></span>B</span>R</span></span>O</span></span>U</span></span>G</span></span>H</span></h2>
-<div class="description-container">random skid that says i cant fed him anways do what u want with this info<br /><br />
-  5 cedar Road SO45 3PG<br />
-</div>
+<h2><span>B</span><span>L</span><span>E</span><span>U</span><span>B</span><span>R</span><span>O</span><span>U</span><span>G</span><span>H</span></h2>
+<div class="description-container">random skid that says i cant fed him anways do what u want with this info<br /><br /> 5 cedar Road SO45 3PG<br /></div>
 <div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
 <div class="card">
 <div class="profile-image"><img src="images/Image.png" alt="Profile 7" /></div>
