@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -46,9 +46,7 @@
 }
 .card:hover {
   transform: scale(1.05);
-  /* Remove the rainbow glow animation and add a red border instead */
-  /* animation: rainbow-glow 2s infinite linear; */
-  border: 3px solid red; /* Add a solid red border */
+  border: 3px solid red;
   transition: all 0.3s ease-in-out;
 }
 .tabs .tab.active { border-bottom: 2px solid #00ffff; }
@@ -71,38 +69,9 @@
   display: inline-block;
   animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear;
   animation-delay: calc(var(--index) * 0.1s);
+  color: red; /* added to make all spans solid red */
 }
-.skid-behind {
-  position: absolute; top:50%; left:50%;
-  transform: translate(-50%, -50%);
-  font-size: 3em; font-weight: bold; opacity: 0; z-index: -1; pointer-events: none; animation: none;
-}
-.card {
-  position: relative; overflow: hidden; min-height: 350px; padding-bottom: 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.container {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
-}
-.description-container {
-  display: block; width: calc(100% - 20px); height: 100px; padding: 10px; margin-top:10px;
-  box-sizing: border-box; border: none; outline: none; background-color: rgba(0,0,0,0.3);
-  color: #fff; font-family: inherit; font-size: 1em; overflow-y: auto; overflow-x: hidden;
-}
-.description-container::-webkit-scrollbar {
-  width: 12px;
-}
-.description-container::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.2);
-  border-radius: 10px;
-}
-.description-container::-webkit-scrollbar-thumb {
-  background: #ff0000;
-  border-radius: 10px;
-}
-.description-container::-webkit-scrollbar-thumb:hover {
-  background: #cc0000;
-}
+/* Remove rainbow animation from spans to keep text solid red */
 </style>
 </head>
 <body>
@@ -173,7 +142,6 @@
 <div class="social-icons">
 <a href="https://doxbin.com/user/CXD" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a>
 </div></div>
-<div class="card">
 <div class="profile-image"><img src="images/QLH2.gif" alt="Profile 5" /></div>
 <h2><span>L</span><span>K</span><span>4</span><span>7</span></h2>
 <div class="description-container">special dox agent/ Owner<br /><br /></div>
@@ -404,6 +372,5 @@ sassy_sniper<br>
     }
   });
 </script>
-
 </body>
 </html>
