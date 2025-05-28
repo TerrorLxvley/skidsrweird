@@ -1,4 +1,4 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -64,14 +64,15 @@
   84% { color: #8b00ff; }
   100% { color: #ff0000; }
 }
-.card h2 { display: flex; justify-content: center; }
+.card h2 {
+  display: flex; justify-content: center;
+}
 .card h2 span {
   display: inline-block;
-  animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear;
+  animation: wave-letters 1s infinite ease-in-out;
   animation-delay: calc(var(--index) * 0.1s);
-  color: red; /* added to make all spans solid red */
+  color: red; /* Make the text solid red */
 }
-/* Remove rainbow animation from spans to keep text solid red */
 </style>
 </head>
 <body>
@@ -260,30 +261,22 @@ sassy_sniper<br>
       volumeSlider.value = initialVolume;
       hoaMusic.volume = initialVolume;
       roiMusic.volume = initialVolume;
-      
-
       const playHoaMusic = function() {
         roiMusic.pause();
         roiMusic.currentTime=0;
         hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
         currentMusic=hoaMusic;
       };
-      
-
       const playRoiMusic = function() {
         hoaMusic.pause();
         hoaMusic.currentTime=0;
         roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
         currentMusic=roiMusic;
       };
-      
-
       const updateVolume = function() {
         if(currentMusic && volumeSlider) currentMusic.volume=volumeSlider.value;
       };
-
       volumeSlider.addEventListener('input', updateVolume);
-      
       if (HOATab) {
         HOATab.addEventListener('click', () => {
           if (currentMusic!==roiMusic) { playRoiMusic(); }
@@ -294,7 +287,6 @@ sassy_sniper<br>
           if (currentMusic!==hoaMusic) { playHoaMusic(); }
         });
       }
-
       hoaMusic.play().catch(e => console.log('Auto-play prevented'));
     }
   });
@@ -309,7 +301,6 @@ sassy_sniper<br>
     const handleInteraction=function() {
       websiteContent.classList.remove('blurred');
       overlay.style.display='none';
-
       const activeTab=document.querySelector('.tabs .tab.active');
       let musicToPlay=null;
       if (activeTab && activeTab.dataset.tab==='HOA') { 
@@ -317,7 +308,6 @@ sassy_sniper<br>
       } else { 
         musicToPlay=hoaMusic; 
       }
-      
       if (musicToPlay && musicToPlay.paused) { 
         musicToPlay.play().catch(e => console.error('Error on interaction:', e)); 
       }
@@ -327,7 +317,6 @@ sassy_sniper<br>
     const handleInteractionOnEnter=function(e) { if(e.key==='Enter'){handleInteraction();} };
     document.addEventListener('keydown', handleInteractionOnEnter);
     overlay.addEventListener('click', handleInteraction);
-
     document.querySelectorAll('.card h2').forEach(h2 => {
       const txt=h2.textContent;
       h2.innerHTML='';
