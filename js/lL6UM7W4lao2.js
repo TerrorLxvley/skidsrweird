@@ -63,9 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
    
     tabs.forEach(tab => {
         tab.addEventListener('click', function(e) {
-            // If the tab contains an anchor tag, don't handle the click here
             if (e.target.tagName === 'A') {
-                // Add tab parameter to the URL if it's linking to index.html
                 if (e.target.href.includes('index.html')) {
                     const tabId = this.getAttribute('data-tab');
                     if (!e.target.href.includes('?')) {
