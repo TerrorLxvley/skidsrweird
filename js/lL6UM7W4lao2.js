@@ -120,8 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
-    // Update current time in footer
+
     function updateTime() {
         const timeElement = document.getElementById('current-time');
         if (timeElement) {
@@ -133,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Update time immediately and then every second
     updateTime();
     setInterval(updateTime, 1000);
 });
