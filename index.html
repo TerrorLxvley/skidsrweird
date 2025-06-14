@@ -195,25 +195,15 @@ Mummy<br />Name - Claire Brookes<br />Date of birth - 11th June 1987<br />Locati
 <h2><span>S</span><span>A</span><span>S</span><span>S</span></span>Y</span></span>_</span></span>S</span></span>N</span></span>I</span></span>P</span></span>E</span></span>R</span></h2>
 <div class="description-container">73.23.179.147<br><br>
 Decimal:1226290067<br>
-
 Hostname:c-73-23-179-147.hsd1.fl.comcast.net<br>
-
 ASN:7922<br>
-
 ISP:Comcast Cable Communications LLC<br>
-
 Services:None detected<br>
-
 Country:United States<br>
-
 State/Region:Florida<br>
-
 City:Marco Island<br>
-
 Latitude:25.9726 (25° 58′ 21.36″ N)<br>
-
 Longitude:-81.7290 (81° 43′ 44.33″ W)<br>
-
 twicth:sassy_sniper54321<br>
 yt:Emi’s rides<br>
 xbox:Chicken1768<br>
@@ -333,10 +323,13 @@ sassy_sniper<br>
         if (!freaksMusic.paused) {
           freaksMusic.pause();
         }
-        musicToPlay= HoaMusic;
-        if (musicToPlay.paused) { 
-          musicToPlay.play().catch(e => console.error('Error on interaction:', e));
+        if (hoaMusic && !hoaMusic.paused) { hoaMusic.pause(); }
+        if (roiMusic && !roiMusic.paused) { roiMusic.pause(); }
+        freaksMusic.src='media/Freaks.mp3';
+        if (freaksMusic.paused) { 
+          freaksMusic.play().catch(e => console.error('Error on interaction:', e));
         }
+        return;
       } else { 
         musicToPlay=hoaMusic; 
       }
@@ -382,7 +375,12 @@ sassy_sniper<br>
           const freaksMusic=document.getElementById('freaks-mp3');
           if (hoaMusic && !hoaMusic.paused) { hoaMusic.pause(); }
           if (roiMusic && !roiMusic.paused) { roiMusic.pause(); }
-          if (freaksMusic && freaksMusic.paused) { freaksMusic.play().catch(e => console.error('Error playing Freaks.mp3:', e)); }
+          if (freaksMusic) {
+            freaksMusic.pause();
+            freaksMusic.currentTime=0;
+            freaksMusic.src='media/Freaks.mp3';
+            freaksMusic.play().catch(e => console.error('Error playing Freaks.mp3:', e));
+          }
         }
       });
     });
