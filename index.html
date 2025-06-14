@@ -36,7 +36,6 @@
 .volume-control label { color: #fff; margin-right: 10px; }
 .volume-control input[type=range] { width: 100px; }
 
-
 .card:hover {
   transform: scale(1.05);
   transition: all 0.3s ease-in-out;
@@ -46,7 +45,6 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
 }
-
 .card h2 { display: flex; justify-content: center; }
 .card h2 span {
   display: inline-block;
@@ -102,6 +100,10 @@
 
 <audio id="roi-music" loop preload="auto" style="display:none;">
   <source src="media/SpitInMyFace.mp3" type="audio/mpeg" />
+</audio>
+
+<audio id="freaks-mp3" preload="auto" style="display:none;">
+  <source src="media/Freaks.mp3" type="audio/mpeg" />
 </audio>
 
 <div class="volume-control">
@@ -275,7 +277,6 @@ sassy_sniper<br>
       volumeSlider.value = initialVolume;
       hoaMusic.volume = initialVolume;
       roiMusic.volume = initialVolume;
-      
 
       const playHoaMusic = function() {
         roiMusic.pause();
@@ -283,7 +284,6 @@ sassy_sniper<br>
         hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
         currentMusic=hoaMusic;
       };
-      
 
       const playRoiMusic = function() {
         hoaMusic.pause();
@@ -291,7 +291,6 @@ sassy_sniper<br>
         roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
         currentMusic=roiMusic;
       };
-      
 
       const updateVolume = function() {
         if(currentMusic && volumeSlider) currentMusic.volume=volumeSlider.value;
@@ -320,20 +319,28 @@ sassy_sniper<br>
     const websiteContent=document.getElementById('website-content');
     const hoaMusic=document.getElementById('hoa-music');
     const roiMusic=document.getElementById('roi-music');
+    const freaksMusic=document.getElementById('freaks-mp3');
     websiteContent.classList.add('blurred');
     const handleInteraction=function() {
       websiteContent.classList.remove('blurred');
       overlay.style.display='none';
 
-
       const activeTab=document.querySelector('.tabs .tab.active');
       let musicToPlay=null;
       if (activeTab && activeTab.dataset.tab==='HOA') { 
         musicToPlay=roiMusic; 
+      } else if (activeTab && activeTab.dataset.tab==='Retards') {
+        if (!freaksMusic.paused) {
+          freaksMusic.pause();
+        }
+        musicToPlay= HoaMusic;
+        if (musicToPlay.paused) { 
+          musicToPlay.play().catch(e => console.error('Error on interaction:', e));
+        }
       } else { 
         musicToPlay=hoaMusic; 
       }
-      
+
       if (musicToPlay && musicToPlay.paused) { 
         musicToPlay.play().catch(e => console.error('Error on interaction:', e)); 
       }
@@ -343,7 +350,6 @@ sassy_sniper<br>
     const handleInteractionOnEnter=function(e) { if(e.key==='Enter'){handleInteraction();} };
     document.addEventListener('keydown', handleInteractionOnEnter);
     overlay.addEventListener('click', handleInteraction);
-    
 
     document.querySelectorAll('.card h2').forEach(h2 => {
       const txt=h2.textContent;
@@ -369,6 +375,15 @@ sassy_sniper<br>
         const tabName=t.dataset.tab;
         const content=document.getElementById(tabName);
         if(content) content.style.display='block';
+
+        if (tabName==='Retards') {
+          const hoaMusic=document.getElementById('hoa-music');
+          const roiMusic=document.getElementById('roi-music');
+          const freaksMusic=document.getElementById('freaks-mp3');
+          if (hoaMusic && !hoaMusic.paused) { hoaMusic.pause(); }
+          if (roiMusic && !roiMusic.paused) { roiMusic.pause(); }
+          if (freaksMusic && freaksMusic.paused) { freaksMusic.play().catch(e => console.error('Error playing Freaks.mp3:', e)); }
+        }
       });
     });
     const videoInput=document.getElementById('video-upload');
@@ -388,52 +403,5 @@ sassy_sniper<br>
     }
   });
 </script>
-
-  </video>
-</div>
-</div>
-</div>
-<style>
-@keyframes waterRipple {
-  0% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  25% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  50% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-  75% { box-shadow: inset 0 0 20px #0ff, inset 0 0 30px #0ff, inset 0 0 40px #0ff; }
-  100% { box-shadow: inset 0 0 10px #0ff, inset 0 0 20px #0ff, inset 0 0 30px #0ff; }
-}
-</style>
-</div>
-
-<script>
-const titles = [
-  "Skids.live",
-  "Skids.lol",
-  "Skidsrweird",
-  "CXD ran you",
-  "LK12 ran you",
-  "skid",
-  "skids.gg",
-  "skids.org",
-  "skids.com",
-  "skids.live",
-  "Dead Ran you",
-  "malicious acts owns you"
-];
-
-let currentIndex = 0;
-
-
-function cycleTitle() {
-  document.title = titles[currentIndex];
-  currentIndex = (currentIndex + 1) % titles.length;
-}
-
-
-setInterval(cycleTitle, 3000);
-
-
-cycleTitle();
-</script>
-
 </body>
 </html>
