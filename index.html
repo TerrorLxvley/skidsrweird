@@ -7,7 +7,7 @@
 <link rel="preload" href="css/9bmjY8CyQwFL.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="css/9bmjY8CyQwFL.css" /></noscript>
 <link rel="preload" href="css/JNS5A1dh7b4Q.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/JNS5A1dh7b4Q.css" /></noscript>
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" /></noscript>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet" /></noscript>
 <meta http-equiv="x-ua-compatible" content="IE=edge" />
@@ -104,12 +104,13 @@
 </video>
 </div>
 
+<!-- Correct audio elements for HOA and Owners -->
 <audio id="hoa-music" loop preload="auto" style="display:none;">
-  <source src="media/reco.mp3" type="audio/mpeg" />
+  <source src="media/star.mp3" type="audio/mpeg" />
 </audio>
 
-<audio id="roi-music" loop preload="auto" style="display:none;">
-  <source src="media/star.mp3" type="audio/mpeg" />
+<audio id="reco-music" loop preload="auto" style="display:none;">
+  <source src="media/reco.mp3" type="audio/mpeg" />
 </audio>
 
 <audio id="freaks-mp3" preload="auto" style="display:none;">
@@ -130,7 +131,7 @@
 <li class="tab" data-tab="Credits">Credits</li>
 </ul>
 <div class="glitch-container">
-<img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectstart="return false" onmousedown="return false;">
+<img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectt="return false" onmousedown="return false;">
 </div>
 </nav>
 </header>
@@ -187,6 +188,8 @@ Mogger<br /><br /></div>
 <div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
 </div>
 </div>
+
+
 <div class="tab-content" id="HOA" style="display:none;">
 <div class="container">
 <div class="card">
@@ -382,10 +385,12 @@ the cp leakers number here<br>
 <div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
 </div>
 </div>
+
 <div class="tab-content" id="Depot" style="display:none;">
 <div class="container">
 </div>
 </div>
+
 <div class="tab-content" id="Credits" style="display:none;">
   <div id="credits-contributors">Contributors</div>
   <div class="container" style="text-align:center; padding:20px; margin-top: 0;">
@@ -400,62 +405,71 @@ the cp leakers number here<br>
 <p>SKIDS</p>
 </div>
 </footer>
+
 <script src="js/lL6UM7W4lao2.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const hoaMusic = document.getElementById('hoa-music');
-    const roiMusic = document.getElementById('roi-music');
+    const hoaMusic = document.getElementById('hoa-music'); // star.mp3
+    const recoMusic = document.getElementById('reco-music'); // reco.mp3
     const freaksMusic = document.getElementById('freaks-mp3');
     const volumeSlider = document.getElementById('volume-slider');
     const tabs = document.querySelectorAll('.tabs .tab');
     let currentMusic = null;
     const initialVolume = 0.6;
+
     function stopAllMusic() {
       if (hoaMusic) { hoaMusic.pause(); hoaMusic.currentTime=0; }
-      if (roiMusic) { roiMusic.pause(); roiMusic.currentTime=0; }
+      if (recoMusic) { recoMusic.pause(); recoMusic.currentTime=0; }
       if (freaksMusic) { freaksMusic.pause(); freaksMusic.currentTime=0; }
     }
-    
+
+    // Function to play the Owner's music (reco.mp3)
+    function playOwnersMusic() {
+      if (recoMusic) {
+        stopAllMusic();
+        recoMusic.currentTime=0;
+        recoMusic.play().catch(e=>console.error('Error playing Owners reco:', e));
+        currentMusic=recoMusic;
+      }
+    }
+
+    // Function to play the HOA music (star.mp3)
+    function playHOAMusic() {
+      if (hoaMusic) {
+        stopAllMusic();
+        hoaMusic.currentTime=0;
+        hoaMusic.play().catch(e=>console.error('Error playing HOA star:', e));
+        currentMusic=hoaMusic;
+      }
+    }
+
+    // Function to play Freaks music
     function playFreaks() {
       if (freaksMusic) {
         stopAllMusic();
         freaksMusic.currentTime=0;
         freaksMusic.play().catch(e=>console.error('Error playing Freaks:', e));
-        currentMusic = freaksMusic;
+        currentMusic=freaksMusic;
       }
     }
-    
+
     function activateTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(c => c.style.display='none');
       const tabContent = document.getElementById(tabName);
       if (tabContent) tabContent.style.display='block';
-      
+
       if (tabName==='Credits') {
         playFreaks();
       } else if (tabName==='Owners') {
-        if (hoaMusic) {
-          stopAllMusic();
-          hoaMusic.currentTime=0;
-          hoaMusic.play().catch(e=>console.error('Error playing HOA:', e));
-          currentMusic=hoaMusic;
-        }
+        playOwnersMusic();
       } else if (tabName==='HOA') {
-        if (hoaMusic) {
-          stopAllMusic();
-          hoaMusic.currentTime=0;
-          hoaMusic.play().catch(e=>console.error('Error playing HOA:', e));
-          currentMusic=hoaMusic;
-        }
+        playHOAMusic();
       } else if (tabName==='Depot') {
-        if (freaksMusic) {
-          stopAllMusic();
-          freaksMusic.currentTime=0;
-          freaksMusic.play().catch(e=>console.error('Error playing Freaks:', e));
-          currentMusic=freaksMusic;
-        }
+        playFreaks();
       }
     }
-    
+
+    // Adding event listeners to tabs
     tabs.forEach(t => {
       t.addEventListener('click', () => {
         tabs.forEach(t2 => t2.classList.remove('active'));
@@ -464,11 +478,14 @@ the cp leakers number here<br>
         activateTab(tabName);
       });
     });
-    if (hoaMusic && roiMusic && volumeSlider) {
+
+    // Initialize volume and start with Owners tab by default
+    if (hoaMusic && recoMusic && volumeSlider) {
       volumeSlider.value = initialVolume;
       hoaMusic.volume = initialVolume;
-      roiMusic.volume = initialVolume;
-      hoaMusic.play().catch(e=>console.log('Auto-play HOA:', e));
+      recoMusic.volume = initialVolume;
+      // Start with Owners tab music
+      activateTab('Owners');
     }
   });
 </script>
@@ -477,7 +494,7 @@ the cp leakers number here<br>
     const overlay=document.getElementById('overlay');
     const websiteContent=document.getElementById('website-content');
     const hoaMusic=document.getElementById('hoa-music');
-    const roiMusic=document.getElementById('roi-music');
+    const recoMusic=document.getElementById('reco-music');
     const freaksMusic=document.getElementById('freaks-mp3');
     websiteContent.classList.add('blurred');
     const handleInteraction=function() {
