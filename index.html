@@ -486,6 +486,28 @@ the cp leakers number here<br>
   });
 </script>
 <script>
+const siteNames = [
+  "Skids.Live",
+  "Skidsrweird",
+  "sex owns you",
+  "sim owns you",
+  "Coffin Sends Regards",
+  "CXD owns You",
+  "You to Skids.live"
+];
+
+let currentIndex = 0;
+
+function updateSiteName() {
+  document.title = siteNames[currentIndex];
+  currentIndex = (currentIndex + 1) % siteNames.length;
+}
+
+updateSiteName();
+
+setInterval(updateSiteName, 2000);
+</script>
+<script>
   document.addEventListener('DOMContentLoaded', function() {
     const tabs=document.querySelectorAll('.tabs .tab');
     const tabContents=document.querySelectorAll('.tab-content');
