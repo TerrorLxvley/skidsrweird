@@ -383,9 +383,7 @@ the cp leakers number here<br>
 </div>
 </div>
 <div class="tab-content" id="Depot" style="display:none;">
-<div class="container">
-<!-- Depot content -->
-</div>
+<div class="container"></div>
 </div>
 <div class="tab-content" id="Credits" style="display:none;">
   <div id="credits-contributors">Contributors</div>
@@ -404,9 +402,9 @@ the cp leakers number here<br>
 <script src="js/lL6UM7W4lao2.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const hoaMusic = document.getElementById('hoa-music');
-    const roiMusic = document.getElementById('roi-music');
-    const freaksMusic = document.getElementById('freaks-mp3');
+    const hoaMusic = document.getElementById('hoa-music'); // star.mp3
+    const roiMusic = document.getElementById('roi-music'); // reco.mp3
+    const freaksMusic = document.getElementById('freaks-mp3'); // freaks.mp3
     const volumeSlider = document.getElementById('volume-slider');
     const tabs = document.querySelectorAll('.tabs .tab');
     let currentMusic = null;
@@ -423,14 +421,14 @@ the cp leakers number here<br>
         stopAllMusic();
         freaksMusic.currentTime=0;
         freaksMusic.play().catch(e=>console.error('Error playing Freaks:', e));
-        currentMusic = freaksMusic;
+        currentMusic=freaksMusic;
       }
     }
 
     function activateTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(c => c.style.display='none');
-      const tabContent = document.getElementById(tabName);
-      if (tabContent) tabContent.style.display='block';
+      const tabId = tabName;
+      document.getElementById(tabId).style.display='block';
 
       if (tabName==='Credits') {
         playFreaks();
@@ -466,6 +464,7 @@ the cp leakers number here<br>
         activateTab(tabName);
       });
     });
+
     if (hoaMusic && roiMusic && volumeSlider) {
       volumeSlider.value = initialVolume;
       hoaMusic.volume=initialVolume;
