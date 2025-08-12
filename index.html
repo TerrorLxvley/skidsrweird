@@ -81,6 +81,17 @@
 .description-container::-webkit-scrollbar-thumb:hover {
   background: #FFFFFF;
 }
+#credits-contributors {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 10px 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2em;
+  z-index: 2000;
+}
 </style>
 </head>
 <body>
@@ -373,17 +384,19 @@ the cp leakers number here<br>
 </div>
 <div class="tab-content" id="Depot" style="display:none;">
 <div class="container">
+<!-- Empty container for depot videos or other content -->
 </div>
 </div>
 <div class="tab-content" id="Credits" style="display:none;">
+  <div id="credits-contributors">Contributors</div>
   <div class="container" style="text-align:center; padding:20px; margin-top: -275px;">
     <h2 style="color:#fff;">Credits</h2>
     <p style="color:#fff;">This site was created by CXD, LK12, Silent, Coffin, SexCapade.</p>
     <p style="color:#fff;">Special thanks to everyone who contributed to the site</p>
   </div>
 </div>
-<div>
-<main>
+</div>
+</main>
 <footer>
 <div class="footer-content">
 <p>SKIDS</p>
@@ -404,15 +417,23 @@ the cp leakers number here<br>
       hoaMusic.volume = initialVolume;
       roiMusic.volume = initialVolume;
       const playHoaMusic = function() {
-        roiMusic.pause();
-        roiMusic.currentTime=0;
-        hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
+        if (roiMusic) {
+          roiMusic.pause();
+          roiMusic.currentTime=0;
+        }
+        if (hoaMusic) {
+          hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
+        }
         currentMusic=hoaMusic;
       };
       const playRoiMusic = function() {
-        hoaMusic.pause();
-        hoaMusic.currentTime=0;
-        roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
+        if (hoaMusic) {
+          hoaMusic.pause();
+          hoaMusic.currentTime=0;
+        }
+        if (roiMusic) {
+          roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
+        }
         currentMusic=roiMusic;
       };
       const updateVolume = function() {
