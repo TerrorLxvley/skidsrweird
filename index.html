@@ -423,7 +423,6 @@ the cp leakers number here<br>
       if (freaksMusic) { freaksMusic.pause(); freaksMusic.currentTime=0; }
     }
 
-    // Function to play the Owner's music (reco.mp3)
     function playOwnersMusic() {
       if (recoMusic) {
         stopAllMusic();
@@ -433,7 +432,6 @@ the cp leakers number here<br>
       }
     }
 
-    // Function to play the HOA music (star.mp3)
     function playHOAMusic() {
       if (hoaMusic) {
         stopAllMusic();
@@ -443,7 +441,6 @@ the cp leakers number here<br>
       }
     }
 
-    // Function to play Freaks music
     function playFreaks() {
       if (freaksMusic) {
         stopAllMusic();
@@ -469,7 +466,6 @@ the cp leakers number here<br>
       }
     }
 
-    // Adding event listeners to tabs
     tabs.forEach(t => {
       t.addEventListener('click', () => {
         tabs.forEach(t2 => t2.classList.remove('active'));
@@ -479,16 +475,14 @@ the cp leakers number here<br>
       });
     });
 
-    // Initialize volume and start with Owners tab by default
     if (hoaMusic && recoMusic && volumeSlider) {
       volumeSlider.value = initialVolume;
       hoaMusic.volume = initialVolume;
       recoMusic.volume = initialVolume;
-      // Start with Owners tab music
       activateTab('Owners');
     }
   });
-</script>
+<script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const overlay=document.getElementById('overlay');
@@ -504,6 +498,6 @@ the cp leakers number here<br>
     document.addEventListener('keydown', function(e) { if(e.key==='Enter') handleInteraction(); });
     overlay.addEventListener('click', handleInteraction);
   });
-</script>
-</body>
-</html>
+<script>
+<body>
+<html>
