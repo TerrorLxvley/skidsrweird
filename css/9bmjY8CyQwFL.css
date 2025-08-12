@@ -142,7 +142,7 @@ header {
         transform: translate(-3px, 1px);
     }
     100% {
-        clip-path: inset(58% 0 43% 0);
+        clip-path: inset: 58% 0 43% 0;
         transform: translate(2px, -2px);
     }
 }
@@ -441,7 +441,6 @@ h2 {
     font-size: 14px;
     transition: transform 0.18s cubic-bezier(0.4,0,0.2,1), opacity 0.18s cubic-bezier(0.4,0,0.2,1);
     will-change: transform, opacity;
-    outline: none;
 }
 
 .search-bar:focus {
@@ -720,25 +719,8 @@ h2:hover {
     color: #fff;
 }
 
-.scrolling-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 150px; 
-  overflow: hidden;
-  margin-top: 20px;
-}
-
-.scrolling-line {
-  white-space: nowrap;
-  font-size: 2em;
-  color: #fff;
-  margin: 10px 0;
-  display: inline-block;
-  animation: slide-left 10s linear infinite;
-}
-
-@keyframes slide-left {
+/* Added styles for downward scrolling names */
+@keyframes slide-horizontal {
   0% {
     transform: translateX(100%);
   }
@@ -747,22 +729,20 @@ h2:hover {
   }
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        width: 100%;
-        max-width: 350px;
-    }
-    .tabs {
-        flex-direction: column;
-        align-items: center;
-    }
-    .tab {
-        margin: 5px 0;
-        width: 100%;
-        text-align: center;
-    }
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px; 
+  overflow: hidden;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.scroll-line {
+  white-space: nowrap;
+  font-size: 2em;
+  color: #fff;
+  display: inline-block;
+  animation: slide-horizontal 10s linear infinite;
 }
