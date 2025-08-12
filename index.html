@@ -31,7 +31,6 @@
 @keyframes neon-glow {
   0% { border-color: transparent; box-shadow: none; }
   50% { border-color: #FFFFFF; box-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; }
-  100% { border-color: transparent; box-shadow: none; }
 }
 .volume-control label { color: #FFFFFF; margin-right: 10px; }
 .volume-control input[type=range] { width: 100px; }
@@ -48,7 +47,7 @@
 .card h2 { display: flex; justify-content: center; }
 .card h2 span {
   display: inline-block;
-  animation: wave-letters 1s infinite ease-in-out, rainbow-letter-color 6s infinite linear;
+  animation: wave-letters 1s infinite ease-in-out;
   animation-delay: calc(var(--index) * 0.1s);
 }
 .skid-behind {
@@ -117,17 +116,16 @@
 <li class="tab active" data-tab="Owners">Owners</li>
 <li class="tab" data-tab="HOA">HOA</li>
 <li class="tab" data-tab="Depot">Retards</li>
+<li class="tab" data-tab="Credits">Credits</li>
 </ul>
 <div class="glitch-container">
 <img src="images/rea5EOtFeS7b.png" class="glitch-image" alt="Glitch effect image" draggable="false" oncontextmenu="return false;" onselectstart="return false" onmousedown="return false;">
 </div>
 </nav>
 </header>
-
 <main>
 <div class="tab-content active" id="Owners">
 <div class="container">
-
 <div class="card">
 <div class="profile-image"><img src="images/QLH2.gif" alt="Profile 5" /></div>
 <h2><span>L</span><span>K</span><span>1</span><span>2</span></h2>
@@ -178,10 +176,8 @@ Mogger<br /><br /></div>
 <div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
 </div>
 </div>
-
 <div class="tab-content" id="HOA" style="display:none;">
 <div class="container">
-
 <div class="card">
 <div class="profile-image"><img src="images/asdfhg.png" alt="Profile 1" /></div>
 <h2><span>L</span><span>e</span><span>x</span><span>i</span><span>e</span> <span>M</span><span>u</span><span>r</span><span>r</span><span>a</span><span>y</span></h2>
@@ -373,15 +369,25 @@ the cp leakers number here<br>
 <h2><span>N</span><span>a</span><span>m</span><span>e</span></h2>
 <div class="description-container">description<br /><br /></div>
 <div class="social-icons"><a href="https://FacePic" target="_blank"><img src="images/e6uSg7LEdcau.png" alt="Doxbin" class="doxbin-icon" /></a></div></div>
-</div> 
-</div> 
+</div>
+</div>
+<div class="tab-content" id="Depot" style="display:none;">
+<div class="container">
+</div>
+</div>
+<div class="tab-content" id="Credits" style="display:none;">
+<div class="container" style="text-align:center; padding:20px;">
+<h2 style="color:#fff;">Credits</h2>
+<p style="color:#fff;">This site was created by [Your Name].</p>
+<p style="color:#fff;">Special thanks to everyone who contributed.</p>
+</div>
+</div>
 </main>
 <footer>
 <div class="footer-content">
 <p>SKIDS</p>
 </div>
 </footer>
-
 <script src="js/lL6UM7W4lao2.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -396,27 +402,22 @@ the cp leakers number here<br>
       volumeSlider.value = initialVolume;
       hoaMusic.volume = initialVolume;
       roiMusic.volume = initialVolume;
-
       const playHoaMusic = function() {
         roiMusic.pause();
         roiMusic.currentTime=0;
         hoaMusic.play().catch(e => console.error('Error playing HOA music:', e));
         currentMusic=hoaMusic;
       };
-
       const playRoiMusic = function() {
         hoaMusic.pause();
         hoaMusic.currentTime=0;
         roiMusic.play().catch(e => console.error('Error playing ROI music:', e));
         currentMusic=roiMusic;
       };
-
       const updateVolume = function() {
         if(currentMusic && volumeSlider) currentMusic.volume=volumeSlider.value;
       };
-
       volumeSlider.addEventListener('input', updateVolume);
-      
       if (HOATab) {
         HOATab.addEventListener('click', () => {
           if (currentMusic!==roiMusic) { playRoiMusic(); }
@@ -427,7 +428,6 @@ the cp leakers number here<br>
           if (currentMusic!==hoaMusic) { playHoaMusic(); }
         });
       }
-
       hoaMusic.play().catch(e => console.log('Auto-play prevented'));
     }
   });
@@ -443,7 +443,6 @@ the cp leakers number here<br>
     const handleInteraction=function() {
       websiteContent.classList.remove('blurred');
       overlay.style.display='none';
-
       const activeTab=document.querySelector('.tabs .tab.active');
       let musicToPlay=null;
       if (activeTab && activeTab.dataset.tab==='HOA') { 
@@ -462,7 +461,6 @@ the cp leakers number here<br>
       } else { 
         musicToPlay=hoaMusic; 
       }
-
       if (musicToPlay && musicToPlay.paused) { 
         musicToPlay.play().catch(e => console.error('Error on interaction:', e)); 
       }
@@ -472,7 +470,6 @@ the cp leakers number here<br>
     const handleInteractionOnEnter=function(e) { if(e.key==='Enter'){handleInteraction();} };
     document.addEventListener('keydown', handleInteractionOnEnter);
     overlay.addEventListener('click', handleInteraction);
-
     document.querySelectorAll('.card h2').forEach(h2 => {
       const txt=h2.textContent;
       h2.innerHTML='';
