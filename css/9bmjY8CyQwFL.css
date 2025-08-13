@@ -727,3 +727,26 @@ h2:hover {
   display: inline-block;
   animation: slide-horizontal 10s linear infinite;
 }
+
+.vip-label {
+  color: yellow;
+  font-weight: bold;
+  position: relative; 
+}
+
+.sparkles {
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  width: 50px; 
+  height: auto;
+  pointer-events: none; 
+  animation: sparkleAnim 2s infinite; 
+}
+
+@keyframes sparkleAnim {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
