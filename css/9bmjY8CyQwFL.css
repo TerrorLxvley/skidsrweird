@@ -751,13 +751,3 @@ h2:hover {
   100% { opacity: 1; }
 }
 
-#credits-contributors {
-  position: fixed !important; 
-  top: 20px;
-  left: -25%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2em;
-  color: #fff;
-}
