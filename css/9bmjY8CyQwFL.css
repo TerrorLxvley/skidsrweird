@@ -737,7 +737,7 @@ h2:hover {
 .sparkles {
   position: absolute;
   top: 40%; 
-  left: 75%; 
+  left: 65%; 
   transform: translate(-50%, -50%);
   width: 50px; 
   height: auto;
